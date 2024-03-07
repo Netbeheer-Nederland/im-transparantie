@@ -2,18 +2,29 @@
 site_name: "im-transparantie"
 theme:
   name: material
-  # palette:
-  #  scheme: slate
-  #  primary: cyan
+  palette:
+    scheme: default
+    primary: white
+    accent: blue
   features:
     - content.tabs.link
+  logo: assets/logo.svg
 plugins:
   - search
   - mermaid2
 nav:
   # - Home: home.md
   - Index: index.md
-  - About: about.md
+  # - About: about.md
+markdown_extensions:
+  - pymdownx.betterem
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+extra_css:
+  - assets/style.css
 site_url: https://Netbeheer-Nederland.github.io/im-transparantie
 repo_url: https://github.com/Netbeheer-Nederland/im-transparantie
 

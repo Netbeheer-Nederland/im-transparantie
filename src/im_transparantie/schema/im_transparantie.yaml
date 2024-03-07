@@ -9,88 +9,75 @@ see_also:
   - https://Netbeheer-Nederland.github.io/im-transparantie
 
 prefixes:
-  im_transparantie: https://w3id.org/Netbeheer-Nederland/im-transparantie/
+  this: https://w3id.org/Netbeheer-Nederland/im-transparantie/
   linkml: https://w3id.org/linkml/
-  biolink: https://w3id.org/biolink/
-  schema: http://schema.org/
-  PATO: http://purl.obolibrary.org/obo/PATO_
-  example: https://example.org/
-default_prefix: im_transparantie
-default_range: string
+  cim: http://iec.ch/TC57/CIM100#
+  eu: http://iec.ch/TC57/CIM100-European#
 
 imports:
   - linkml:types
+default_curi_maps:
+  - semweb_context
+default_prefix: this
+default_range: string
 
 classes:
-
-  NamedThing:
-    description: >-
-      A generic grouping for any identifiable entity
-    slots:
-      - id
-      - name
-      - description
-    class_uri: schema:Thing
-
   IdentifiedObject:
-    is_a: NamedThing
-    description: >-
-      Represents a IdentifiedObject
-    slots:
-      - primary_email
-      - birth_date
-      - age_in_years
-      - vital_status
-    slot_usage:
-      primary_email:
-        pattern: "^\\S+@[\\S+\\.]+\\S+"
-
-  IdentifiedObjectCollection:
-    tree_root: true
-    description: >-
-      A holder for IdentifiedObject objects
+    name: IdentifiedObject
+    description: This is a root class to provide common identification for all classes
+      needing identification and naming attributes.
+    from_schema: http://iec.ch/TC57/ns/CIM/CoreEquipment-EU#Package_CoreEquipmentProfile
+    class_uri: cim:IdentifiedObject
     attributes:
-      entries:
-        range: IdentifiedObject
-        multivalued: true
-        inlined: true
+      description:
+        name: description
+        description: The description is a free human readable text describing or naming
+          the object. It may be non unique and may not correlate to a naming hierarchy.
+        from_schema: http://iec.ch/TC57/ns/CIM/CoreEquipment-EU#Package_CoreEquipmentProfile
+        slot_uri: cim:IdentifiedObject.description
+        multivalued: false
+        range: string
+        required: false
+      energyIdentCodeEic:
+        name: energyIdentCodeEic
+        description: The attribute is used for an exchange of the EIC code (Energy
+          identification Code). The length of the string is 16 characters as defined
+          by the EIC code. For details on EIC scheme please refer to ENTSO-E web site.
+        from_schema: http://iec.ch/TC57/ns/CIM/CoreEquipment-EU#Package_CoreEquipmentProfile
+        slot_uri: eu:IdentifiedObject.energyIdentCodeEic
+        multivalued: false
+        range: string
+        required: false
+      mRID:
+        name: mRID
+        description: 'Master resource identifier issued by a model authority. The
+          mRID is unique within an exchange context. Global uniqueness is easily achieved
+          by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID
+          is strongly recommended.
 
-slots:
-  id:
-    identifier: true
-    slot_uri: schema:identifier
-    range: uriorcurie
-    description: A unique identifier for a thing
-  name:
-    slot_uri: schema:name
-    description: A human-readable name for a thing
-  description:
-    slot_uri: schema:description
-    description: A human-readable description for a thing
-  primary_email:
-    slot_uri: schema:email
-    description: The main email address of a person
-  birth_date:
-    slot_uri: schema:birthDate
-    range: date
-    description: Date on which a person is born
-  age_in_years:
-    range: integer
-    description: Number of years since birth
-  vital_status:
-    range: PersonStatus
-    description: living or dead status
-
-enums:
-  PersonStatus:
-    permissible_values:
-      ALIVE:
-        description: the person is living
-        meaning: PATO:0001421
-      DEAD:
-        description: the person is deceased
-        meaning: PATO:0001422
-      UNKNOWN:
-        description: the vital status is not known
-        todos:
-          - map this to an ontology
+          For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID
+          is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.'
+        from_schema: http://iec.ch/TC57/ns/CIM/CoreEquipment-EU#Package_CoreEquipmentProfile
+        slot_uri: cim:IdentifiedObject.mRID
+        multivalued: false
+        identifier: true
+        range: string
+        required: true
+      name:
+        name: name
+        description: The name is any free human readable and possibly non unique text
+          naming the object.
+        from_schema: http://iec.ch/TC57/ns/CIM/CoreEquipment-EU#Package_CoreEquipmentProfile
+        slot_uri: cim:IdentifiedObject.name
+        multivalued: false
+        range: string
+        required: true
+      shortName:
+        name: shortName
+        description: The attribute is used for an exchange of a human readable short
+          name with length of the string 12 characters maximum.
+        from_schema: http://iec.ch/TC57/ns/CIM/CoreEquipment-EU#Package_CoreEquipmentProfile
+        slot_uri: eu:IdentifiedObject.shortName
+        multivalued: false
+        range: string
+        required: false
