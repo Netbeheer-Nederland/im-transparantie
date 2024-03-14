@@ -244,12 +244,12 @@ Voedingsgebied {
 }
 Transportcapaciteit {
     Energierichting energierichting  
-    SoortTransportcapaciteit soort  
+    Soort transportcapaciteit soort  
     integer waarde  
 }
-Congestiegebied {
+CongestieInVoedingsgebied {
     Energierichting energierichting  
-    Congestiegebiedstatus status  
+    Congestiestatus status  
     date verwacht_eindmoment  
 }
 TransportcapaciteitVoorNieuweTransportverzoeken {
@@ -260,7 +260,7 @@ TransportcapaciteitVoorNieuweTransportverzoeken {
 Voedingsgebied ||--|| Netbeheerder : "netbeheerder"
 Voedingsgebied ||--}o Postcodegebied : "postcodegebied"
 Transportcapaciteit ||--|| Voedingsgebied : "voedingsgebied"
-Congestiegebied ||--|| Voedingsgebied : "voedingsgebied"
+CongestieInVoedingsgebied ||--|| Voedingsgebied : "voedingsgebied"
 </code></pre>
 <h2 id="classes">Classes</h2>
 <table>
@@ -272,8 +272,8 @@ Congestiegebied ||--|| Voedingsgebied : "voedingsgebied"
 </thead>
 <tbody>
 <tr>
-<td><a href="Congestiegebied/">Congestiegebied</a></td>
-<td>geografisch gebied waarin de te verwachten behoefte aan transport redelijkerwijs kan leiden tot een structureel tekort aan transportcapaciteit</td>
+<td><a href="CongestieInVoedingsgebied/">CongestieInVoedingsgebied</a></td>
+<td>situatie in een bepaald voedingsgebied, waarin de te verwachten behoefte aan transport redelijkerwijs kan leiden tot een structureel tekort aan transportcapaciteit</td>
 </tr>
 <tr>
 <td><a href="Netbeheerder/">Netbeheerder</a></td>
@@ -336,7 +336,7 @@ Congestiegebied ||--|| Voedingsgebied : "voedingsgebied"
 </tr>
 <tr>
 <td><a href="netbeheerder/">netbeheerder</a></td>
-<td>een voedingsgebied is in beheer bij een netbeheerder</td>
+<td>netbeheerder die in het voedingsgebied de taak tot aansluiten heeft</td>
 </tr>
 <tr>
 <td><a href="postcode/">postcode</a></td>
@@ -344,7 +344,7 @@ Congestiegebied ||--|| Voedingsgebied : "voedingsgebied"
 </tr>
 <tr>
 <td><a href="postcodegebied/">postcodegebied</a></td>
-<td>een voedingsgebied overlapt met een postcodegebied</td>
+<td>postcodegebied dat overlapt met het voedingsgebied</td>
 </tr>
 <tr>
 <td><a href="soort/">soort</a></td>
@@ -352,7 +352,7 @@ Congestiegebied ||--|| Voedingsgebied : "voedingsgebied"
 </tr>
 <tr>
 <td><a href="status/">status</a></td>
-<td>toestand waarin een congestiegebied zich bevindt</td>
+<td>toestand waarin een congestie zich bevindt</td>
 </tr>
 <tr>
 <td><a href="statutaire_naam/">statutaire_naam</a></td>
@@ -364,11 +364,11 @@ Congestiegebied ||--|| Voedingsgebied : "voedingsgebied"
 </tr>
 <tr>
 <td><a href="verwacht_eindmoment/">verwacht_eindmoment</a></td>
-<td>moment waarop naar verwachting geen sprake meer zal zijn van een structureel ...</td>
+<td>moment waarop naar verwachting geen sprake meer zal zijn van congestie</td>
 </tr>
 <tr>
 <td><a href="voedingsgebied/">voedingsgebied</a></td>
-<td>een transportcapaciteit geldt voor een voedingsgebied</td>
+<td>voedingsgebied waarvoor de transportcapaciteit geldt</td>
 </tr>
 <tr>
 <td><a href="waarde/">waarde</a></td>
@@ -386,7 +386,7 @@ Congestiegebied ||--|| Voedingsgebied : "voedingsgebied"
 </thead>
 <tbody>
 <tr>
-<td><a href="Congestiegebiedstatus/">Congestiegebiedstatus</a></td>
+<td><a href="Congestiestatus/">Congestiestatus</a></td>
 <td></td>
 </tr>
 <tr>

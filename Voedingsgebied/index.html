@@ -264,13 +264,13 @@ Voedingsgebied ||--}o Postcodegebied : "postcodegebied"
 <tr>
 <td><a href="../netbeheerder/">netbeheerder</a></td>
 <td>1..1 <br/> <a href="../Netbeheerder/">Netbeheerder</a></td>
-<td>een voedingsgebied is in beheer bij een netbeheerder</td>
+<td>netbeheerder die in het voedingsgebied de taak tot aansluiten heeft</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../postcodegebied/">postcodegebied</a></td>
 <td>0..* <br/> <a href="../Postcodegebied/">Postcodegebied</a></td>
-<td>een voedingsgebied overlapt met een postcodegebied</td>
+<td>postcodegebied dat overlapt met het voedingsgebied</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -293,7 +293,7 @@ Voedingsgebied ||--}o Postcodegebied : "postcodegebied"
 <td><a href="./">Voedingsgebied</a></td>
 </tr>
 <tr>
-<td><a href="../Congestiegebied/">Congestiegebied</a></td>
+<td><a href="../CongestieInVoedingsgebied/">CongestieInVoedingsgebied</a></td>
 <td><a href="../voedingsgebied/">voedingsgebied</a></td>
 <td>range</td>
 <td><a href="./">Voedingsgebied</a></td>
@@ -352,7 +352,7 @@ Voedingsgebied ||--}o Postcodegebied : "postcodegebied"
 <span class="w">    </span><span class="nt">identifier</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Voedingsgebied</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TransportcapaciteitVoorNieuweTransportverzoeken</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Transportcapaciteit voor nieuwe transportverzoeken</span>
 <span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">  </span><span class="nt">naam</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">naam</span>
@@ -382,7 +382,7 @@ Voedingsgebied ||--}o Postcodegebied : "postcodegebied"
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span>
 <span class="w">  </span><span class="nt">netbeheerder</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">netbeheerder</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">een voedingsgebied is in beheer bij een netbeheerder</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">netbeheerder die in het voedingsgebied de taak tot aansluiten heeft</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/Netbeheer-Nederland/im-transparantie</span>
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">identifier</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
@@ -392,7 +392,7 @@ Voedingsgebied ||--}o Postcodegebied : "postcodegebied"
 <span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">  </span><span class="nt">postcodegebied</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postcodegebied</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">een voedingsgebied overlapt met een postcodegebied</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postcodegebied dat overlapt met het voedingsgebied</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/Netbeheer-Nederland/im-transparantie</span>
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
@@ -432,7 +432,7 @@ Voedingsgebied ||--}o Postcodegebied : "postcodegebied"
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Voedingsgebied</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Voedingsgebied</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TransportcapaciteitVoorNieuweTransportverzoeken</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Transportcapaciteit voor nieuwe transportverzoeken</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 <span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">  </span><span class="nt">naam</span><span class="p">:</span>
@@ -471,7 +471,7 @@ Voedingsgebied ||--}o Postcodegebied : "postcodegebied"
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span>
 <span class="w">  </span><span class="nt">netbeheerder</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">netbeheerder</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">een voedingsgebied is in beheer bij een netbeheerder</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">netbeheerder die in het voedingsgebied de taak tot aansluiten heeft</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/Netbeheer-Nederland/im-transparantie</span>
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">identifier</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
@@ -483,7 +483,7 @@ Voedingsgebied ||--}o Postcodegebied : "postcodegebied"
 <span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">  </span><span class="nt">postcodegebied</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postcodegebied</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">een voedingsgebied overlapt met een postcodegebied</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postcodegebied dat overlapt met het voedingsgebied</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/Netbeheer-Nederland/im-transparantie</span>
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
