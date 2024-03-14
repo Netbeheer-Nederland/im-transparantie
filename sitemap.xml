@@ -151,6 +151,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://Netbeheer-Nederland.github.io/im-transparantie/aantal_MW/</loc>
+         <lastmod>2024-03-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://Netbeheer-Nederland.github.io/im-transparantie/about/</loc>
          <lastmod>2024-03-14</lastmod>
          <changefreq>daily</changefreq>
@@ -237,11 +242,6 @@
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/im-transparantie/voedingsgebied/</loc>
-         <lastmod>2024-03-14</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://Netbeheer-Nederland.github.io/im-transparantie/waarde/</loc>
          <lastmod>2024-03-14</lastmod>
          <changefreq>daily</changefreq>
     </url>

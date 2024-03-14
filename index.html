@@ -245,7 +245,7 @@ Voedingsgebied {
 TransportcapaciteitInVoedingsgebied {
     Energierichting energierichting  
     Soort transportcapaciteit soort  
-    integer waarde  
+    integer aantal_MW  
 }
 CongestieInVoedingsgebied {
     Energierichting energierichting  
@@ -254,6 +254,7 @@ CongestieInVoedingsgebied {
 }
 TransportcapaciteitVoorNieuweTransportverzoekenInPostcodegebied {
     string energiedrager  
+    Energierichting energierichting  
     Transportcapaciteitcategorie categorie  
 }
 
@@ -261,6 +262,7 @@ Voedingsgebied ||--|| Netbeheerder : "netbeheerder"
 Voedingsgebied ||--}o Postcodegebied : "postcodegebied"
 TransportcapaciteitInVoedingsgebied ||--|| Voedingsgebied : "voedingsgebied"
 CongestieInVoedingsgebied ||--|| Voedingsgebied : "voedingsgebied"
+TransportcapaciteitVoorNieuweTransportverzoekenInPostcodegebied ||--|| Postcodegebied : "postcodegebied"
 </code></pre>
 <h2 id="classes">Classes</h2>
 <table>
@@ -285,7 +287,7 @@ CongestieInVoedingsgebied ||--|| Voedingsgebied : "voedingsgebied"
 </tr>
 <tr>
 <td><a href="TransportcapaciteitInVoedingsgebied/">TransportcapaciteitInVoedingsgebied</a></td>
-<td>vermogen om een energiedrager te verplaatsen</td>
+<td>vermogen om een energiedrager te verplaatsen in een bepaald voedingsgebied</td>
 </tr>
 <tr>
 <td><a href="TransportcapaciteitVoorNieuweTransportverzoekenInPostcodegebied/">TransportcapaciteitVoorNieuweTransportverzoekenInPostcodegebied</a></td>
@@ -306,6 +308,10 @@ CongestieInVoedingsgebied ||--|| Voedingsgebied : "voedingsgebied"
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><a href="aantal_MW/">aantal_MW</a></td>
+<td>hoeveelheid megawatt</td>
+</tr>
 <tr>
 <td><a href="bedrijfs_EAN_code/">bedrijfs_EAN_code</a></td>
 <td>identificatienummer van een onderneming conform de Europese Artikel Nummering</td>
@@ -369,10 +375,6 @@ CongestieInVoedingsgebied ||--|| Voedingsgebied : "voedingsgebied"
 <tr>
 <td><a href="voedingsgebied/">voedingsgebied</a></td>
 <td>voedingsgebied waarvoor de transportcapaciteit geldt</td>
-</tr>
-<tr>
-<td><a href="waarde/">waarde</a></td>
-<td>hoeveelheid megawatt</td>
 </tr>
 </tbody>
 </table>
