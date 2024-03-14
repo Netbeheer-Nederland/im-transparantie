@@ -90,11 +90,12 @@ classes:
         description: postcodegebied dat overlapt met het voedingsgebied
         range: Postcodegebied
         multivalued: true
+    unique_keys:
       main:
         unique_key_slots:
-          - netbeheerder
-          - energiedrager
-          - identificatie
+        - netbeheerder
+        - energiedrager
+        - identificatie
   Transportcapaciteit in voedingsgebied: # hoe annoteer ik dat op deze klasse de NEN 3610 tijdlijn geldigheid van toepassing is?
     name: Transportcapaciteit in voedingsgebied
     description: vermogen om een energiedrager te verplaatsen in een bepaald voedingsgebied
