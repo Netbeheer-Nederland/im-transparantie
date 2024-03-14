@@ -35,6 +35,10 @@ classes:
         name: geometrie
         description: tweedimensionale geometrische representatie van het vlak dat wordt gevormd door de omtrekken van een postcodegebied
         required: true
+    unique_keys:
+      main:
+        unique_key_slots:
+          - postcode
   Netbeheerder:
     name: Netbeheerder
     description: vennootschap die op grond van de wet is aangewezen voor het beheer van een of meer energienetten, niet zijnde gesloten distributiesystemen
@@ -48,6 +52,10 @@ classes:
         name: statutaire naam
         description: eerste handelsnaam van een onderneming zoals geregistreerd in een register van ondernemingen
         required: true
+    unique_keys:
+      main:
+        unique_key_slots:
+          - bedrijfs-EAN-code
   Voedingsgebied:
     name: Voedingsgebied
     description: geografisch afgebakend gebied waar zich de overdrachtspunten van aansluitingen bevinden die van energie worden voorzien door een bepaald netelement
@@ -56,17 +64,14 @@ classes:
         name: identificatie
         description: reeks karakters toegewezen aan een voedingsgebied om deze ondubbelzinnig te herkennen en onderscheiden van andere voedingsgebieden van dezelfde netbeheerder
         required: true
-        identifier: true
       energiedrager:
         name: energiedrager
         description: opslagmedium voor energie
         slot_uri: nbnl:energiedrager
         required: true
-        identifier: true
       naam:
         name: naam
         description: woord of groep van woorden ter aanduiding van een voedingsgebied
-        required: true
       geometrie:
         name: geometrie
         description: tweedimensionale geometrische representatie van het vlak dat wordt gevormd door de omtrekken van een voedingsgebied
@@ -80,15 +85,19 @@ classes:
         description: netbeheerder die in het voedingsgebied de taak tot aansluiten heeft
         range: Netbeheerder
         required: true
-        identifier: true
       postcodegebied:
         name: postcodegebied
         description: postcodegebied dat overlapt met het voedingsgebied
         range: Postcodegebied
         multivalued: true
+      main:
+        unique_key_slots:
+          - netbeheerder
+          - energiedrager
+          - identificatie
   Transportcapaciteit in voedingsgebied: # hoe annoteer ik dat op deze klasse de NEN 3610 tijdlijn geldigheid van toepassing is?
     name: Transportcapaciteit in voedingsgebied
-    description: vermogen om een energiedrager te verplaatsen
+    description: vermogen om een energiedrager te verplaatsen in een bepaald voedingsgebied
     attributes:
       energierichting:
         name: energierichting
@@ -100,17 +109,24 @@ classes:
         description: groep dingen met gemeenschappelijke kenmerken
         range: Soort transportcapaciteit
         required: true
-      waarde:
-        name: waarde
+      aantal MW:
+        name: aantal MW
         description: hoeveelheid megawatt
         range: integer
+        unit:
+          ucum_code: MW
         required: true
       voedingsgebied:
         name: voedingsgebied
         description: voedingsgebied waarvoor de transportcapaciteit geldt
         range: Voedingsgebied
         required: true
-        identifier: true
+    unique_keys:
+      main:
+        unique_key_slots:
+          - voedingsgebied
+          - energierichting
+          - soort
   Congestie in voedingsgebied:
     name: Congestie in voedingsgebied
     description: situatie in een bepaald voedingsgebied, waarin de te verwachten behoefte aan transport redelijkerwijs kan leiden tot een structureel tekort aan transportcapaciteit
@@ -120,7 +136,6 @@ classes:
         description: kant waarop energie beweegt
         range: Energierichting
         required: true
-        identifier: true
       status:
         name: status
         description: toestand waarin een congestie zich bevindt
@@ -135,7 +150,11 @@ classes:
         description: voedingsgebied waarin zich de congestie voordoet
         range: Voedingsgebied
         required: true
-        identifier: true
+    unique_keys:
+      main:
+        unique_key_slots:
+          - voedingsgebied
+          - energierichting
   Transportcapaciteit voor nieuwe transportverzoeken in postcodegebied:
     name: Transportcapaciteit voor nieuwe transportverzoeken in postcodegebied
     description: transportcapaciteit beschikbaar in een postcodegebied om nog niet ingediende transportverzoeken uit te voeren
@@ -145,12 +164,27 @@ classes:
         description: opslagmedium voor energie
         slot_uri: nbnl:energiedrager
         required: true
-        identifier: true
+      energierichting:
+        name: energierichting
+        description: kant waarop energie beweegt
+        range: Energierichting
+        required: true
       categorie:
         name: categorie
         description: onderdeel van een rangschikking
-        required: true
         range: Transportcapaciteitcategorie
+        required: true
+      postcodegebied:
+        name: postcodegebied
+        description: postcodegebied waarvoor de transportcapaciteit geldt
+        range: Postcodegebied
+        required: true
+    unique_keys:
+      main:
+        unique_key_slots:
+          - postcodegebied
+          - energiedrager
+          - energierichting
 
 enums:
   Energierichting:
@@ -180,6 +214,10 @@ enums:
   Transportcapaciteitcategorie:
     permissible_values:
       beschikbaar:
+        description: de netbeheerder verwacht geen tekort aan transportcapaciteit
       beperkt beschikbaar:
+        description: de netbeheerder verwacht geen tekort aan transportcapaciteit maar nieuwe transportverzoeken vereisen mogelijk onderzoek om de gevraagde en beschikbare transportcapaciteit met elkaar in overeenstemming te brengen
       in onderzoek:
+        description: de netbeheerder onderzoekt de mogelijkheden voor de toepassing van congestiemanagement zodat er mogelijk transportcapaciteit beschikbaar komt
       tekort:
+        description: er is te weinig transportcapaciteit
