@@ -76,7 +76,7 @@ classes:
         description: aantal transportverzoeken binnen een voedingsgebied dat in een wachtrij staat
         range: integer
       netbeheerder:
-        name: netbheerder
+        name: netbeheerder
         description: netbeheerder die in het voedingsgebied de taak tot aansluiten heeft
         range: Netbeheerder
         required: true
