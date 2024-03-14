@@ -11,8 +11,8 @@ see_also:
 prefixes:
   this: https://w3id.org/Netbeheer-Nederland/im-transparantie/
   linkml: https://w3id.org/linkml/
-  cim: http://iec.ch/TC57/CIM100#
-  eu: http://iec.ch/TC57/CIM100-European#
+  nbnl: https://begrippen.netbeheernederland.nl/energiesysteembeheer/nl/page/
+  cbs: https://www.cbs.nl/nl-nl/onze-diensten/methoden/begrippen/
 
 imports:
   - linkml:types
@@ -22,62 +22,164 @@ default_prefix: this
 default_range: string
 
 classes:
-  IdentifiedObject:
-    name: IdentifiedObject
-    description: This is a root class to provide common identification for all classes
-      needing identification and naming attributes.
-    from_schema: http://iec.ch/TC57/ns/CIM/CoreEquipment-EU#Package_CoreEquipmentProfile
-    class_uri: cim:IdentifiedObject
+  Postcodegebied:
+    name: Postcodegebied
+    description: indeling bedoeld als hulpmiddel bij de bezorging van post
+    class_uri: cbs:postcodegebied
     attributes:
-      description:
-        name: description
-        description: The description is a free human readable text describing or naming
-          the object. It may be non unique and may not correlate to a naming hierarchy.
-        from_schema: http://iec.ch/TC57/ns/CIM/CoreEquipment-EU#Package_CoreEquipmentProfile
-        slot_uri: cim:IdentifiedObject.description
-        multivalued: false
-        range: string
-        required: false
-      energyIdentCodeEic:
-        name: energyIdentCodeEic
-        description: The attribute is used for an exchange of the EIC code (Energy
-          identification Code). The length of the string is 16 characters as defined
-          by the EIC code. For details on EIC scheme please refer to ENTSO-E web site.
-        from_schema: http://iec.ch/TC57/ns/CIM/CoreEquipment-EU#Package_CoreEquipmentProfile
-        slot_uri: eu:IdentifiedObject.energyIdentCodeEic
-        multivalued: false
-        range: string
-        required: false
-      mRID:
-        name: mRID
-        description: 'Master resource identifier issued by a model authority. The
-          mRID is unique within an exchange context. Global uniqueness is easily achieved
-          by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID
-          is strongly recommended.
-
-          For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID
-          is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.'
-        from_schema: http://iec.ch/TC57/ns/CIM/CoreEquipment-EU#Package_CoreEquipmentProfile
-        slot_uri: cim:IdentifiedObject.mRID
-        multivalued: false
+      postcode:
+        name: postcode
+        description: reeks tekens om het automatisch sorteren van post gemakkelijker te maken
+        required: true
+      geometrie:
+        name: geometrie
+        description: tweedimensionale geometrische representatie van het vlak dat wordt gevormd door de omtrekken van een postcodegebied
+        required: true
+  Netbeheerder:
+    name: Netbeheerder
+    description: vennootschap die op grond van de wet is aangewezen voor het beheer van een of meer energienetten, niet zijnde gesloten distributiesystemen
+    class_uri: nbnl:netbeheerder
+    attributes:
+      bedrijfs-EAN-code:
+        name: bedrijfs-EAN-code
+        description: identificatienummer van een onderneming conform de Europese Artikel Nummering
+        required: true
+      statutaire naam:
+        name: statutaire naam
+        description: eerste handelsnaam van een onderneming zoals geregistreerd in een register van ondernemingen
+        required: true
+  Voedingsgebied:
+    name: Voedingsgebied
+    description: geografisch afgebakend gebied waar zich de overdrachtspunten van aansluitingen bevinden die van energie worden voorzien door een bepaald netelement
+    attributes:
+      identificatie:
+        name: identificatie
+        description: reeks karakters toegewezen aan een voedingsgebied om deze ondubbelzinnig te herkennen en onderscheiden van andere voedingsgebieden van dezelfde netbeheerder
+        required: true
         identifier: true
-        range: string
+      energiedrager:
+        name: energiedrager
+        description: opslagmedium voor energie
+        slot_uri: nbnl:energiedrager
         required: true
-      name:
-        name: name
-        description: The name is any free human readable and possibly non unique text
-          naming the object.
-        from_schema: http://iec.ch/TC57/ns/CIM/CoreEquipment-EU#Package_CoreEquipmentProfile
-        slot_uri: cim:IdentifiedObject.name
-        multivalued: false
-        range: string
+        identifier: true
+      naam:
+        name: naam
+        description: woord of groep van woorden ter aanduiding van een voedingsgebied
         required: true
-      shortName:
-        name: shortName
-        description: The attribute is used for an exchange of a human readable short
-          name with length of the string 12 characters maximum.
-        from_schema: http://iec.ch/TC57/ns/CIM/CoreEquipment-EU#Package_CoreEquipmentProfile
-        slot_uri: eu:IdentifiedObject.shortName
-        multivalued: false
-        range: string
-        required: false
+      geometrie:
+        name: geometrie
+        description: tweedimensionale geometrische representatie van het vlak dat wordt gevormd door de omtrekken van een voedingsgebied
+        required: true
+      transportverzoeken in een wachtrij:
+        name: transportverzoeken in een wachtrij
+        description: aantal transportverzoeken binnen een voedingsgebied dat in een wachtrij staat
+        range: integer
+      netbeheerder:
+        name: van
+        description: een voedingsgebied is in beheer bij een netbeheerder
+        range: Netbeheerder
+        required: true
+        identifier: true
+      postcodegebied:
+        name: overlappend met
+        description: een voedingsgebied overlapt met een postcodegebied
+        range: Postcodegebied
+        multivalued: true
+  Transportcapaciteit: # hoe annoteer ik dat op deze klasse de NEN 3610 tijdlijn geldigheid van toepassing is?
+    name: Transportcapaciteit
+    description: vermogen om een energiedrager te verplaatsen
+      attributes:
+        energierichting:
+          name: energierichting
+          description: kant waarop energie beweegt
+          range: Energierichting
+          required: true
+        soort:
+          name: soort
+          description: groep dingen met gemeenschappelijke kenmerken
+          range: SoortTransportcapaciteit
+          required: true
+        waarde:
+          name: waarde
+          description: hoeveelheid megawatt
+          range: integer
+          required: true
+        voedingsgebied:
+          name: in
+          description: een transportcapaciteit geldt voor een voedingsgebied
+          range: Voedingsgebied
+          required: true
+          identifier: true
+  Congestiegebied:
+    name: Congestiegebied
+    description: geografisch gebied waarin de te verwachten behoefte aan transport redelijkerwijs kan leiden tot een structureel tekort aan transportcapaciteit
+      attributes:
+        energierichting:
+          name: energierichting
+          description: kant waarop energie beweegt
+          range: Energierichting
+          required: true
+          identifier: true
+        status:
+          name: status
+          description: toestand waarin een congestiegebied zich bevindt
+          range: Congestiegebiedstatus
+          required: true
+        verwacht eindmoment:
+          name: verwacht eindmoment
+          description: moment waarop naar verwachting geen sprake meer zal zijn van een structureel tekort aan beschikbare transportcapaciteit
+          range: dateTime
+        voedingsgebied:
+          name: in
+          description: een congestiegebied is gelegen in een voedingsgebied
+          range: Voedingsgebied
+          required: true
+          identifier: true
+  TransportcapaciteitVoorNieuweTransportverzoeken:
+    name: Transportcapaciteit voor nieuwe transportverzoeken
+    description: transportcapaciteit beschikbaar om nog niet ingediende transportverzoeken uit te voeren
+    attributes:
+      energiedrager:
+        name: energiedrager
+        description: opslagmedium voor energie
+        slot_uri: nbnl:energiedrager
+        required: true
+        identifier: true
+      categorie:
+        name: categorie
+        description: onderdeel van een rangschikking
+        required: true
+        range: Transportcapaciteitcategorie
+
+enums:
+  Energierichting:
+    permissible_values:
+      invoeding:
+        description: inbrenging van energie op het energienet
+        meaning: nbnl:invoeding
+      afname:
+        description: onttrekking van energie aan het energienet
+        meaning: nbnl:afname
+  SoortTransportcapaciteit:
+    permissible_values:
+      aanwezige transportcapaciteit:
+        description: maximale capaciteit dat een energienet aankan, met inachtneming van de van toepassing zijnde netontwerpcriteria en operationele veiligheidsgrenzen
+      benodigde transportcapaciteit:
+        description: transportcapaciteit nodig om transportovereenkomsten uit te voeren
+      geraamde benodigde transportcapaciteit voor de totale behoefte aan transport:
+      gevraagde transportcapaciteit:
+        description: transportcapaciteit nodig om transportverzoeken uit te voeren
+      transportcapaciteit beschikbaar door congestiemanagement:
+  Congestiegebiedstatus:
+    permissible_values:
+      vooraangekondigd:
+        description: toestand waarin de netbeheerder door middel van een vooraankondiging als bedoeld in artikel 9.9 van de Netcode elektriciteit (geldend van 20-2-2024) een mogelijk tekort aan beschikbare transportcapaciteit heeft gemeld zonder dat deze vooraankondiding is komen te vervallen en waarbij het onderzoek als bedoeld in artikel 9.10 van de Netcode elektriciteit (geldend van 20-2-2024) nog niet is gepubliceerd
+      actief:
+        description: toestand waarin de netbeheerder na publicatie van een onderzoek als bedoeld in artikel 9.10 van de Netcode elektriciteit (geldend van 20-2-2024) congestiemanagement toepast
+  Transportcapaciteitcategorie:
+    permissible_values:
+      beschikbaar:
+      beperkt beschikbaar:
+      in onderzoek:
+      tekort:
