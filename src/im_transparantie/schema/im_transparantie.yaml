@@ -89,53 +89,53 @@ classes:
   Transportcapaciteit: # hoe annoteer ik dat op deze klasse de NEN 3610 tijdlijn geldigheid van toepassing is?
     name: Transportcapaciteit
     description: vermogen om een energiedrager te verplaatsen
-      attributes:
-        energierichting:
-          name: energierichting
-          description: kant waarop energie beweegt
-          range: Energierichting
-          required: true
-        soort:
-          name: soort
-          description: groep dingen met gemeenschappelijke kenmerken
-          range: SoortTransportcapaciteit
-          required: true
-        waarde:
-          name: waarde
-          description: hoeveelheid megawatt
-          range: integer
-          required: true
-        voedingsgebied:
-          name: in
-          description: een transportcapaciteit geldt voor een voedingsgebied
-          range: Voedingsgebied
-          required: true
-          identifier: true
+    attributes:
+      energierichting:
+        name: energierichting
+        description: kant waarop energie beweegt
+        range: Energierichting
+        required: true
+      soort:
+        name: soort
+        description: groep dingen met gemeenschappelijke kenmerken
+        range: SoortTransportcapaciteit
+        required: true
+      waarde:
+        name: waarde
+        description: hoeveelheid megawatt
+        range: integer
+        required: true
+      voedingsgebied:
+        name: in
+        description: een transportcapaciteit geldt voor een voedingsgebied
+        range: Voedingsgebied
+        required: true
+        identifier: true
   Congestiegebied:
     name: Congestiegebied
     description: geografisch gebied waarin de te verwachten behoefte aan transport redelijkerwijs kan leiden tot een structureel tekort aan transportcapaciteit
-      attributes:
-        energierichting:
-          name: energierichting
-          description: kant waarop energie beweegt
-          range: Energierichting
-          required: true
-          identifier: true
-        status:
-          name: status
-          description: toestand waarin een congestiegebied zich bevindt
-          range: Congestiegebiedstatus
-          required: true
-        verwacht eindmoment:
-          name: verwacht eindmoment
-          description: moment waarop naar verwachting geen sprake meer zal zijn van een structureel tekort aan beschikbare transportcapaciteit
-          range: dateTime
-        voedingsgebied:
-          name: in
-          description: een congestiegebied is gelegen in een voedingsgebied
-          range: Voedingsgebied
-          required: true
-          identifier: true
+    attributes:
+      energierichting:
+        name: energierichting
+        description: kant waarop energie beweegt
+        range: Energierichting
+        required: true
+        identifier: true
+      status:
+        name: status
+        description: toestand waarin een congestiegebied zich bevindt
+        range: Congestiegebiedstatus
+        required: true
+      verwacht eindmoment:
+        name: verwacht eindmoment
+        description: moment waarop naar verwachting geen sprake meer zal zijn van een structureel tekort aan beschikbare transportcapaciteit
+        range: date
+      voedingsgebied:
+        name: in
+        description: een congestiegebied is gelegen in een voedingsgebied
+        range: Voedingsgebied
+        required: true
+        identifier: true
   TransportcapaciteitVoorNieuweTransportverzoeken:
     name: Transportcapaciteit voor nieuwe transportverzoeken
     description: transportcapaciteit beschikbaar om nog niet ingediende transportverzoeken uit te voeren
