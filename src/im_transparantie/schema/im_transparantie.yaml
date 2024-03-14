@@ -76,13 +76,13 @@ classes:
         description: aantal transportverzoeken binnen een voedingsgebied dat in een wachtrij staat
         range: integer
       netbeheerder:
-        name: van
+        name: netbeheerder
         description: een voedingsgebied is in beheer bij een netbeheerder
         range: Netbeheerder
         required: true
         identifier: true
       postcodegebied:
-        name: overlappend met
+        name: postcodegebied
         description: een voedingsgebied overlapt met een postcodegebied
         range: Postcodegebied
         multivalued: true
@@ -106,7 +106,7 @@ classes:
         range: integer
         required: true
       voedingsgebied:
-        name: in
+        name: voedingsgebied
         description: een transportcapaciteit geldt voor een voedingsgebied
         range: Voedingsgebied
         required: true
@@ -131,13 +131,13 @@ classes:
         description: moment waarop naar verwachting geen sprake meer zal zijn van een structureel tekort aan beschikbare transportcapaciteit
         range: date
       voedingsgebied:
-        name: in
+        name: voedingsgebied
         description: een congestiegebied is gelegen in een voedingsgebied
         range: Voedingsgebied
         required: true
         identifier: true
   TransportcapaciteitVoorNieuweTransportverzoeken:
-    name: Transportcapaciteit voor nieuwe transportverzoeken
+    name: TransportcapaciteitVoorNieuweTransportverzoeken
     description: transportcapaciteit beschikbaar om nog niet ingediende transportverzoeken uit te voeren
     attributes:
       energiedrager:
