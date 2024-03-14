@@ -194,22 +194,31 @@
 <h1 id="class-congestiegebied">Class: Congestiegebied</h1>
 <p><em>geografisch gebied waarin de te verwachten behoefte aan transport redelijkerwijs kan leiden tot een structureel tekort aan transportcapaciteit</em></p>
 <p>URI: <a href="https://w3id.org/Netbeheer-Nederland/im-transparantie/Congestiegebied">this:Congestiegebied</a></p>
-<pre class="mermaid"><code> classDiagram
-    class Congestiegebied
-      Congestiegebied : energierichting
+<pre class="mermaid"><code>erDiagram
+Congestiegebied {
+    Energierichting energierichting  
+    Congestiegebiedstatus status  
+    date verwacht_eindmoment  
+}
+Voedingsgebied {
+    string identificatie  
+    string energiedrager  
+    string naam  
+    string geometrie  
+    integer transportverzoeken_in_een_wachtrij  
+}
+Postcodegebied {
+    string postcode  
+    string geometrie  
+}
+Netbeheerder {
+    string bedrijfs_EAN_code  
+    string statutaire_naam  
+}
 
-          Congestiegebied --&gt; Energierichting : energierichting
-
-      Congestiegebied : status
-
-          Congestiegebied --&gt; Congestiegebiedstatus : status
-
-      Congestiegebied : verwacht_eindmoment
-
-      Congestiegebied : voedingsgebied
-
-          Congestiegebied --&gt; Voedingsgebied : voedingsgebied
-
+Congestiegebied ||--|| Voedingsgebied : "voedingsgebied"
+Voedingsgebied ||--|| Netbeheerder : "netbeheerder"
+Voedingsgebied ||--}o Postcodegebied : "postcodegebied"
 </code></pre>
 <!-- no inheritance hierarchy -->
 <h2 id="slots">Slots</h2>

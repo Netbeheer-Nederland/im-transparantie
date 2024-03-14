@@ -199,11 +199,12 @@
 <h1 id="class-netbeheerder">Class: Netbeheerder</h1>
 <p><em>vennootschap die op grond van de wet is aangewezen voor het beheer van een of meer energienetten, niet zijnde gesloten distributiesystemen</em></p>
 <p>URI: <a href="https://begrippen.netbeheernederland.nl/energiesysteembeheer/nl/page/netbeheerder">nbnl:netbeheerder</a></p>
-<pre class="mermaid"><code> classDiagram
-    class Netbeheerder
-      Netbeheerder : bedrijfs_EAN_code
+<pre class="mermaid"><code>erDiagram
+Netbeheerder {
+    string bedrijfs_EAN_code  
+    string statutaire_naam  
+}
 
-      Netbeheerder : statutaire_naam
 
 </code></pre>
 <!-- no inheritance hierarchy -->

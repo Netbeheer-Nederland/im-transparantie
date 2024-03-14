@@ -194,13 +194,12 @@
 <h1 id="class-transportcapaciteitvoornieuwetransportverzoeken">Class: TransportcapaciteitVoorNieuweTransportverzoeken</h1>
 <p><em>transportcapaciteit beschikbaar om nog niet ingediende transportverzoeken uit te voeren</em></p>
 <p>URI: <a href="https://w3id.org/Netbeheer-Nederland/im-transparantie/TransportcapaciteitVoorNieuweTransportverzoeken">this:TransportcapaciteitVoorNieuweTransportverzoeken</a></p>
-<pre class="mermaid"><code> classDiagram
-    class TransportcapaciteitVoorNieuweTransportverzoeken
-      TransportcapaciteitVoorNieuweTransportverzoeken : categorie
+<pre class="mermaid"><code>erDiagram
+TransportcapaciteitVoorNieuweTransportverzoeken {
+    string energiedrager  
+    Transportcapaciteitcategorie categorie  
+}
 
-          TransportcapaciteitVoorNieuweTransportverzoeken --&gt; Transportcapaciteitcategorie : categorie
-
-      TransportcapaciteitVoorNieuweTransportverzoeken : energiedrager
 
 </code></pre>
 <!-- no inheritance hierarchy -->

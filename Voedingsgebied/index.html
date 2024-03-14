@@ -199,26 +199,25 @@
 <h1 id="class-voedingsgebied">Class: Voedingsgebied</h1>
 <p><em>geografisch afgebakend gebied waar zich de overdrachtspunten van aansluitingen bevinden die van energie worden voorzien door een bepaald netelement</em></p>
 <p>URI: <a href="https://w3id.org/Netbeheer-Nederland/im-transparantie/Voedingsgebied">this:Voedingsgebied</a></p>
-<pre class="mermaid"><code> classDiagram
-    class Voedingsgebied
-      Voedingsgebied : energiedrager
+<pre class="mermaid"><code>erDiagram
+Voedingsgebied {
+    string identificatie  
+    string energiedrager  
+    string naam  
+    string geometrie  
+    integer transportverzoeken_in_een_wachtrij  
+}
+Postcodegebied {
+    string postcode  
+    string geometrie  
+}
+Netbeheerder {
+    string bedrijfs_EAN_code  
+    string statutaire_naam  
+}
 
-      Voedingsgebied : geometrie
-
-      Voedingsgebied : identificatie
-
-      Voedingsgebied : naam
-
-      Voedingsgebied : netbeheerder
-
-          Voedingsgebied --&gt; Netbeheerder : netbeheerder
-
-      Voedingsgebied : postcodegebied
-
-          Voedingsgebied --&gt; Postcodegebied : postcodegebied
-
-      Voedingsgebied : transportverzoeken_in_een_wachtrij
-
+Voedingsgebied ||--|| Netbeheerder : "netbeheerder"
+Voedingsgebied ||--}o Postcodegebied : "postcodegebied"
 </code></pre>
 <!-- no inheritance hierarchy -->
 <h2 id="slots">Slots</h2>

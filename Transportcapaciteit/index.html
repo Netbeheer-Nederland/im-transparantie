@@ -194,22 +194,31 @@
 <h1 id="class-transportcapaciteit">Class: Transportcapaciteit</h1>
 <p><em>vermogen om een energiedrager te verplaatsen</em></p>
 <p>URI: <a href="https://w3id.org/Netbeheer-Nederland/im-transparantie/Transportcapaciteit">this:Transportcapaciteit</a></p>
-<pre class="mermaid"><code> classDiagram
-    class Transportcapaciteit
-      Transportcapaciteit : energierichting
+<pre class="mermaid"><code>erDiagram
+Transportcapaciteit {
+    Energierichting energierichting  
+    SoortTransportcapaciteit soort  
+    integer waarde  
+}
+Voedingsgebied {
+    string identificatie  
+    string energiedrager  
+    string naam  
+    string geometrie  
+    integer transportverzoeken_in_een_wachtrij  
+}
+Postcodegebied {
+    string postcode  
+    string geometrie  
+}
+Netbeheerder {
+    string bedrijfs_EAN_code  
+    string statutaire_naam  
+}
 
-          Transportcapaciteit --&gt; Energierichting : energierichting
-
-      Transportcapaciteit : soort
-
-          Transportcapaciteit --&gt; SoortTransportcapaciteit : soort
-
-      Transportcapaciteit : voedingsgebied
-
-          Transportcapaciteit --&gt; Voedingsgebied : voedingsgebied
-
-      Transportcapaciteit : waarde
-
+Transportcapaciteit ||--|| Voedingsgebied : "voedingsgebied"
+Voedingsgebied ||--|| Netbeheerder : "netbeheerder"
+Voedingsgebied ||--}o Postcodegebied : "postcodegebied"
 </code></pre>
 <!-- no inheritance hierarchy -->
 <h2 id="slots">Slots</h2>
