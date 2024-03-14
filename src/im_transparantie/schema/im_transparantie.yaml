@@ -23,104 +23,131 @@ default_range: string
 
 classes:
   Postcodegebied:
+    name: Postcodegebied
     description: indeling bedoeld als hulpmiddel bij de bezorging van post
     class_uri: cbs:postcodegebied
     attributes:
       postcode:
+        name: postcode
         description: reeks tekens om het automatisch sorteren van post gemakkelijker te maken
         required: true
       geometrie:
+        name: geometrie
         description: tweedimensionale geometrische representatie van het vlak dat wordt gevormd door de omtrekken van een postcodegebied
         required: true
   Netbeheerder:
+    name: Netbeheerder
     description: vennootschap die op grond van de wet is aangewezen voor het beheer van een of meer energienetten, niet zijnde gesloten distributiesystemen
     class_uri: nbnl:netbeheerder
     attributes:
       bedrijfs-EAN-code:
+        name: bedrijfs-EAN-code
         description: identificatienummer van een onderneming conform de Europese Artikel Nummering
         required: true
       statutaire naam:
+        name: statutaire naam
         description: eerste handelsnaam van een onderneming zoals geregistreerd in een register van ondernemingen
         required: true
   Voedingsgebied:
+    name: Voedingsgebied
     description: geografisch afgebakend gebied waar zich de overdrachtspunten van aansluitingen bevinden die van energie worden voorzien door een bepaald netelement
     attributes:
       identificatie:
+        name: identificatie
         description: reeks karakters toegewezen aan een voedingsgebied om deze ondubbelzinnig te herkennen en onderscheiden van andere voedingsgebieden van dezelfde netbeheerder
         required: true
         identifier: true
       energiedrager:
+        name: energiedrager
         description: opslagmedium voor energie
         slot_uri: nbnl:energiedrager
         required: true
         identifier: true
       naam:
+        name: naam
         description: woord of groep van woorden ter aanduiding van een voedingsgebied
         required: true
       geometrie:
+        name: geometrie
         description: tweedimensionale geometrische representatie van het vlak dat wordt gevormd door de omtrekken van een voedingsgebied
         required: true
       transportverzoeken in een wachtrij:
+        name: transportverzoeken in een wachtrij
         description: aantal transportverzoeken binnen een voedingsgebied dat in een wachtrij staat
         range: integer
       netbeheerder:
-        description: een voedingsgebied is in beheer bij een netbeheerder
+        name: netbheerder
+        description: netbeheerder die in het voedingsgebied de taak tot aansluiten heeft
         range: Netbeheerder
         required: true
         identifier: true
       postcodegebied:
-        description: een voedingsgebied overlapt met een postcodegebied
+        name: postcodegebied
+        description: postcodegebied dat overlapt met het voedingsgebied
         range: Postcodegebied
         multivalued: true
   Transportcapaciteit: # hoe annoteer ik dat op deze klasse de NEN 3610 tijdlijn geldigheid van toepassing is?
+    name: Transportcapaciteit
     description: vermogen om een energiedrager te verplaatsen
     attributes:
       energierichting:
+        name: energierichting
         description: kant waarop energie beweegt
         range: Energierichting
         required: true
       soort:
+        name: soort
         description: groep dingen met gemeenschappelijke kenmerken
-        range: SoortTransportcapaciteit
+        range: Soort transportcapaciteit
         required: true
       waarde:
+        name: waarde
         description: hoeveelheid megawatt
         range: integer
         required: true
       voedingsgebied:
-        description: een transportcapaciteit geldt voor een voedingsgebied
+        name: voedingsgebied
+        description: voedingsgebied waarvoor de transportcapaciteit geldt
         range: Voedingsgebied
         required: true
         identifier: true
-  Congestiegebied:
-    description: geografisch gebied waarin de te verwachten behoefte aan transport redelijkerwijs kan leiden tot een structureel tekort aan transportcapaciteit
+  Congestie in voedingsgebied:
+    name: Congestie in voedingsgebied
+    description: situatie in een bepaald voedingsgebied, waarin de te verwachten behoefte aan transport redelijkerwijs kan leiden tot een structureel tekort aan transportcapaciteit
     attributes:
       energierichting:
+        name: energierichting
         description: kant waarop energie beweegt
         range: Energierichting
         required: true
         identifier: true
       status:
-        description: toestand waarin een congestiegebied zich bevindt
-        range: Congestiegebiedstatus
+        name: status
+        description: toestand waarin een congestie zich bevindt
+        range: Congestiestatus
         required: true
       verwacht eindmoment:
-        description: moment waarop naar verwachting geen sprake meer zal zijn van een structureel tekort aan beschikbare transportcapaciteit
+        name: verwacht eindmoment
+        description: moment waarop naar verwachting geen sprake meer zal zijn van congestie
         range: date
       voedingsgebied:
-        description: een congestiegebied is gelegen in een voedingsgebied
+        name: voedingsgebied
+        description: voedingsgebied waarin zich de congestie voordoet
         range: Voedingsgebied
         required: true
         identifier: true
-  TransportcapaciteitVoorNieuweTransportverzoeken:
+  Transportcapaciteit voor nieuwe transportverzoeken:
+    name: Transportcapaciteit voor nieuwe transportverzoeken
     description: transportcapaciteit beschikbaar om nog niet ingediende transportverzoeken uit te voeren
     attributes:
       energiedrager:
+        name: energiedrager
         description: opslagmedium voor energie
         slot_uri: nbnl:energiedrager
         required: true
         identifier: true
       categorie:
+        name: categorie
         description: onderdeel van een rangschikking
         required: true
         range: Transportcapaciteitcategorie
@@ -134,7 +161,7 @@ enums:
       afname:
         description: onttrekking van energie aan het energienet
         meaning: nbnl:afname
-  SoortTransportcapaciteit:
+  Soort transportcapaciteit:
     permissible_values:
       aanwezige transportcapaciteit:
         description: maximale capaciteit dat een energienet aankan, met inachtneming van de van toepassing zijnde netontwerpcriteria en operationele veiligheidsgrenzen
@@ -144,7 +171,7 @@ enums:
       gevraagde transportcapaciteit:
         description: transportcapaciteit nodig om transportverzoeken uit te voeren
       transportcapaciteit beschikbaar door congestiemanagement:
-  Congestiegebiedstatus:
+  Congestiestatus:
     permissible_values:
       vooraangekondigd:
         description: toestand waarin de netbeheerder door middel van een vooraankondiging als bedoeld in artikel 9.9 van de Netcode elektriciteit (geldend van 20-2-2024) een mogelijk tekort aan beschikbare transportcapaciteit heeft gemeld zonder dat deze vooraankondiding is komen te vervallen en waarbij het onderzoek als bedoeld in artikel 9.10 van de Netcode elektriciteit (geldend van 20-2-2024) nog niet is gepubliceerd
