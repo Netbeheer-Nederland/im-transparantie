@@ -86,8 +86,8 @@ classes:
         description: postcodegebied dat overlapt met het voedingsgebied
         range: Postcodegebied
         multivalued: true
-  Transportcapaciteit: # hoe annoteer ik dat op deze klasse de NEN 3610 tijdlijn geldigheid van toepassing is?
-    name: Transportcapaciteit
+  Transportcapaciteit in voedingsgebied: # hoe annoteer ik dat op deze klasse de NEN 3610 tijdlijn geldigheid van toepassing is?
+    name: Transportcapaciteit in voedingsgebied
     description: vermogen om een energiedrager te verplaatsen
     attributes:
       energierichting:
@@ -136,9 +136,9 @@ classes:
         range: Voedingsgebied
         required: true
         identifier: true
-  Transportcapaciteit voor nieuwe transportverzoeken:
-    name: Transportcapaciteit voor nieuwe transportverzoeken
-    description: transportcapaciteit beschikbaar om nog niet ingediende transportverzoeken uit te voeren
+  Transportcapaciteit voor nieuwe transportverzoeken in postcodegebied:
+    name: Transportcapaciteit voor nieuwe transportverzoeken in postcodegebied
+    description: transportcapaciteit beschikbaar in een postcodegebied om nog niet ingediende transportverzoeken uit te voeren
     attributes:
       energiedrager:
         name: energiedrager
