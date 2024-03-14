@@ -242,7 +242,7 @@ Voedingsgebied {
     string geometrie  
     integer transportverzoeken_in_een_wachtrij  
 }
-Transportcapaciteit {
+TransportcapaciteitInVoedingsgebied {
     Energierichting energierichting  
     Soort transportcapaciteit soort  
     integer waarde  
@@ -252,14 +252,14 @@ CongestieInVoedingsgebied {
     Congestiestatus status  
     date verwacht_eindmoment  
 }
-TransportcapaciteitVoorNieuweTransportverzoeken {
+TransportcapaciteitVoorNieuweTransportverzoekenInPostcodegebied {
     string energiedrager  
     Transportcapaciteitcategorie categorie  
 }
 
 Voedingsgebied ||--|| Netbeheerder : "netbeheerder"
 Voedingsgebied ||--}o Postcodegebied : "postcodegebied"
-Transportcapaciteit ||--|| Voedingsgebied : "voedingsgebied"
+TransportcapaciteitInVoedingsgebied ||--|| Voedingsgebied : "voedingsgebied"
 CongestieInVoedingsgebied ||--|| Voedingsgebied : "voedingsgebied"
 </code></pre>
 <h2 id="classes">Classes</h2>
@@ -284,12 +284,12 @@ CongestieInVoedingsgebied ||--|| Voedingsgebied : "voedingsgebied"
 <td>indeling bedoeld als hulpmiddel bij de bezorging van post</td>
 </tr>
 <tr>
-<td><a href="Transportcapaciteit/">Transportcapaciteit</a></td>
+<td><a href="TransportcapaciteitInVoedingsgebied/">TransportcapaciteitInVoedingsgebied</a></td>
 <td>vermogen om een energiedrager te verplaatsen</td>
 </tr>
 <tr>
-<td><a href="TransportcapaciteitVoorNieuweTransportverzoeken/">TransportcapaciteitVoorNieuweTransportverzoeken</a></td>
-<td>transportcapaciteit beschikbaar om nog niet ingediende transportverzoeken uit te voeren</td>
+<td><a href="TransportcapaciteitVoorNieuweTransportverzoekenInPostcodegebied/">TransportcapaciteitVoorNieuweTransportverzoekenInPostcodegebied</a></td>
+<td>transportcapaciteit beschikbaar in een postcodegebied om nog niet ingediende transportverzoeken uit te voeren</td>
 </tr>
 <tr>
 <td><a href="Voedingsgebied/">Voedingsgebied</a></td>
