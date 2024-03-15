@@ -82,8 +82,8 @@ classes:
         - netbeheerder
         - energiedrager
         - identificatie
-  Transportcapaciteit in voedingsgebied: # hoe annoteer ik dat op deze klasse de NEN 3610 tijdlijn geldigheid van toepassing is?
-    description: vermogen om een energiedrager te verplaatsen in een bepaald voedingsgebied
+  Transportcapaciteit:
+    description: vermogen om een energiedrager te verplaatsen
     attributes:
       energierichting:
         description: kant waarop energie beweegt
@@ -103,14 +103,23 @@ classes:
         description: voedingsgebied waarvoor de transportcapaciteit geldt
         range: Voedingsgebied
         required: true
+      versie:
+        description: versieaanduiding van een informatieobject (NEN3610)
+      begin geldigheid:
+        description: start van de periode waarop deze versie van het informatieobject geldig is (NEN 3610)
+        range: date
+      eind geldigheid:
+        description: eind van de periode waarop deze versie van het informatieobject geldig is (NEN 3610)
+        range: date
     unique_keys:
       main:
         unique_key_slots:
           - voedingsgebied
           - energierichting
           - soort
-  Congestie in voedingsgebied:
-    description: situatie in een bepaald voedingsgebied, waarin de te verwachten behoefte aan transport redelijkerwijs kan leiden tot een structureel tekort aan transportcapaciteit
+          - versie
+  Congestie:
+    description: situatie waarin de te verwachten behoefte aan transport redelijkerwijs kan leiden tot een structureel tekort aan transportcapaciteit
     attributes:
       energierichting:
         description: kant waarop energie beweegt
@@ -132,8 +141,8 @@ classes:
         unique_key_slots:
           - voedingsgebied
           - energierichting
-  Transportcapaciteit voor nieuwe transportverzoeken in postcodegebied:
-    description: transportcapaciteit beschikbaar in een postcodegebied om nog niet ingediende transportverzoeken uit te voeren
+  Capaciteit voor nieuwe transportverzoeken:
+    description: transportcapaciteit beschikbaar om nog niet ingediende transportverzoeken uit te voeren
     attributes:
       energiedrager:
         description: opslagmedium voor energie
