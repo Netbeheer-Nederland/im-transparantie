@@ -6,12 +6,22 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://Netbeheer-Nederland.github.io/im-transparantie/Aansluittaak/</loc>
+         <lastmod>2024-03-15</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://Netbeheer-Nederland.github.io/im-transparantie/Boolean/</loc>
          <lastmod>2024-03-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/im-transparantie/CapaciteitVoorNieuweTransportverzoeken/</loc>
+         <lastmod>2024-03-15</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://Netbeheer-Nederland.github.io/im-transparantie/Capaciteitscategorie/</loc>
          <lastmod>2024-03-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -91,6 +101,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://Netbeheer-Nederland.github.io/im-transparantie/Netvlak/</loc>
+         <lastmod>2024-03-15</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://Netbeheer-Nederland.github.io/im-transparantie/Nodeidentifier/</loc>
          <lastmod>2024-03-15</lastmod>
          <changefreq>daily</changefreq>
@@ -127,11 +142,6 @@
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/im-transparantie/Transportcapaciteit/</loc>
-         <lastmod>2024-03-15</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://Netbeheer-Nederland.github.io/im-transparantie/Transportcapaciteitcategorie/</loc>
          <lastmod>2024-03-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -211,17 +221,12 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://Netbeheer-Nederland.github.io/im-transparantie/netbeheerder/</loc>
+         <loc>https://Netbeheer-Nederland.github.io/im-transparantie/netvlak/</loc>
          <lastmod>2024-03-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/im-transparantie/postcode/</loc>
-         <lastmod>2024-03-15</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://Netbeheer-Nederland.github.io/im-transparantie/postcodegebied/</loc>
          <lastmod>2024-03-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -252,11 +257,6 @@
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/im-transparantie/verwacht_eindmoment/</loc>
-         <lastmod>2024-03-15</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://Netbeheer-Nederland.github.io/im-transparantie/voedingsgebied/</loc>
          <lastmod>2024-03-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
