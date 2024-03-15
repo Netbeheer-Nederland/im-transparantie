@@ -26,15 +26,15 @@ classes:
     description: toekenning door de ACM van een gebied aan een netbeheerder waarbinnen deze de wettelijke taak inzake aansluiten verricht
     slots:
       - energiedrager
+      - netbeheerder
       - netvlak
-      - Netbeheerder
-      - Postcodegebied
+      - postcodegebied
   Capaciteit voor nieuwe transportverzoeken:
     description: transportcapaciteit beschikbaar om nog niet ingediende transportverzoeken uit te voeren
     slots:
+      - aansluittaak
       - energiedrager
       - energierichting
-      - Aansluittaak
     attributes:
       categorie:
         description: onderdeel van een rangschikking naar capaciteit
@@ -43,14 +43,14 @@ classes:
     unique_keys:
       main:
         unique_key_slots:
+          - aansluittaak
           - energiedrager
           - energierichting
-          - Aansluittaak
   Congestie:
     description: situatie waarin de te verwachten behoefte aan transport redelijkerwijs kan leiden tot een structureel tekort aan transportcapaciteit
     slots:
       - energierichting
-      - Voedingsgebied
+      - voedingsgebied
     attributes:
       status:
         description: toestand waarin een congestie zich bevindt
@@ -63,7 +63,7 @@ classes:
       main:
         unique_key_slots:
           - energierichting
-          - Voedingsgebied
+          - voedingsgebied
   Netbeheerder:
     description: vennootschap die op grond van de wet is aangewezen voor het beheer van een of meer energienetten, niet zijnde gesloten distributiesystemen
     class_uri: nbnl:netbeheerder
@@ -88,10 +88,10 @@ classes:
     description: vermogen om een energiedrager te verplaatsen
     slots:
       - energierichting
-      - versie
       - begin geldigheid
       - eind geldigheid
-      - Voedingsgebied
+      - versie
+      - voedingsgebied
     attributes:
       soort:
         description: groep dingen met gemeenschappelijke kenmerken
@@ -109,7 +109,7 @@ classes:
           - energierichting
           - soort
           - versie
-          - Voedingsgebied
+          - voedingsgebied
   Voedingsgebied:
     description: geografisch afgebakend gebied waar zich de overdrachtspunten van aansluitingen bevinden die van energie worden voorzien door een bepaald netelement
     slots:
@@ -117,8 +117,8 @@ classes:
       - geometrie
       - identificatie
       - naam
-      - Netbeheerder
-      - Postcodegebied
+      - netbeheerder
+      - postcodegebied
     slot_usage:
       postcodegebied:
         multivalued: true
@@ -131,12 +131,22 @@ classes:
         unique_key_slots:
         - energiedrager
         - identificatie
-        - Netbeheerder
+        - netbeheerder
 
 slots:
+  aansluittaak:
+    range: Aansluittaak
+    required: true
   bedrijfs-EAN-code:
     description: identificatienummer van een onderneming conform de Europese Artikel Nummering
     required: true
+  begin geldigheid:
+    description: start van de periode waarop deze versie van het informatieobject geldig is (NEN 3610)
+    range: date
+    required: true
+  eind geldigheid:
+    description: eind van de periode waarop deze versie van het informatieobject geldig is (NEN 3610)
+    range: date
   energiedrager:
     description: opslagmedium voor energie
     slot_uri: nbnl:energiedrager
@@ -153,6 +163,9 @@ slots:
     required: true
   naam:
     description: woord of groep van woorden om iets aan te duiden
+  netbeheerder:
+    range: Netbeheerder
+    required: true
   netvlak:
     description: deel van het net waarvoor geldt dat de verbruikers aangesloten op dit deel van het net eenzelfde tarief in rekening krijgen
     range: netvlak
@@ -160,31 +173,18 @@ slots:
   postcode:
     description: reeks tekens om het automatisch sorteren van post gemakkelijker te maken
     required: true
-  statutaire naam:
-    description: eerste handelsnaam van een onderneming zoals geregistreerd in een register van ondernemingen
-    required: true
-  Aansluittaak:
-    range: Aansluittaak
-    required: true
-  Netbeheerder:
-    range: Netbeheerder
-    required: true
-  Postcodegebied:
+  postcodegebied:
     range: Postcodegebied
     required: true
-  Voedingsgebied:
-    range: Voedingsgebied
+  statutaire naam:
+    description: eerste handelsnaam van een onderneming zoals geregistreerd in een register van ondernemingen
     required: true
   versie:
     description: versieaanduiding van een informatieobject (NEN3610)
     required: true
-  begin geldigheid:
-    description: start van de periode waarop deze versie van het informatieobject geldig is (NEN 3610)
-    range: date
+  voedingsgebied:
+    range: Voedingsgebied
     required: true
-  eind geldigheid:
-    description: eind van de periode waarop deze versie van het informatieobject geldig is (NEN 3610)
-    range: date
 
 enums:
   capaciteitscategorie:
