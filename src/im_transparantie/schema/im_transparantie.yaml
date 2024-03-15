@@ -22,76 +22,80 @@ default_prefix: this
 default_range: string
 
 classes:
-  Postcodegebied:
-    description: indeling bedoeld als hulpmiddel bij de bezorging van post
-    class_uri: cbs:postcodegebied
+  Aansluittaak:
+    description: toekenning door de ACM van een gebied aan een netbeheerder waarbinnen deze de wettelijke taak inzake aansluiten verricht
+    slots:
+      - energiedrager
+      - netvlak
+      - Netbeheerder
+      - Postcodegebied
+  Capaciteit voor nieuwe transportverzoeken:
+    description: transportcapaciteit beschikbaar om nog niet ingediende transportverzoeken uit te voeren
+    slots:
+      - energiedrager
+      - energierichting
+      - Postcodegebied
     attributes:
-      postcode:
-        description: reeks tekens om het automatisch sorteren van post gemakkelijker te maken
-        required: true
-      geometrie:
-        description: tweedimensionale geometrische representatie van het vlak dat wordt gevormd door de omtrekken van een postcodegebied
+      categorie:
+        description: onderdeel van een rangschikking
+        range: capaciteitscategorie
         required: true
     unique_keys:
       main:
         unique_key_slots:
-          - postcode
+          - energiedrager
+          - energierichting
+          - Postcodegebied
+  Congestie:
+    description: situatie waarin de te verwachten behoefte aan transport redelijkerwijs kan leiden tot een structureel tekort aan transportcapaciteit
+    slots:
+      - energierichting
+      - Voedingsgebied
+    attributes:
+      status:
+        description: toestand waarin een congestie zich bevindt
+        range: congestiestatus
+        required: true
+      verwacht eindmoment:
+        description: moment waarop naar verwachting geen sprake meer zal zijn van congestie
+        range: date
+    unique_keys:
+      main:
+        unique_key_slots:
+          - energierichting
+          - Voedingsgebied
   Netbeheerder:
     description: vennootschap die op grond van de wet is aangewezen voor het beheer van een of meer energienetten, niet zijnde gesloten distributiesystemen
     class_uri: nbnl:netbeheerder
-    attributes:
-      bedrijfs-EAN-code:
-        description: identificatienummer van een onderneming conform de Europese Artikel Nummering
-        required: true
-      statutaire naam:
-        description: eerste handelsnaam van een onderneming zoals geregistreerd in een register van ondernemingen
-        required: true
+    slots:
+      - bedrijfs-EAN-code
+      - statutaire naam
     unique_keys:
       main:
         unique_key_slots:
           - bedrijfs-EAN-code
-  Voedingsgebied:
-    description: geografisch afgebakend gebied waar zich de overdrachtspunten van aansluitingen bevinden die van energie worden voorzien door een bepaald netelement
-    attributes:
-      identificatie:
-        description: reeks karakters toegewezen aan een voedingsgebied om deze ondubbelzinnig te herkennen en onderscheiden van andere voedingsgebieden van dezelfde netbeheerder
-        required: true
-      energiedrager:
-        description: opslagmedium voor energie
-        slot_uri: nbnl:energiedrager
-        required: true
-      naam:
-        description: woord of groep van woorden ter aanduiding van een voedingsgebied
-      geometrie:
-        description: tweedimensionale geometrische representatie van het vlak dat wordt gevormd door de omtrekken van een voedingsgebied
-        required: true
-      transportverzoeken in een wachtrij:
-        description: aantal transportverzoeken binnen een voedingsgebied dat in een wachtrij staat
-        range: integer
-      netbeheerder:
-        description: netbeheerder die in het voedingsgebied de taak tot aansluiten heeft
-        range: Netbeheerder
-        required: true
-      postcodegebied:
-        description: postcodegebied dat overlapt met het voedingsgebied
-        range: Postcodegebied
-        multivalued: true
+  Postcodegebied:
+    description: indeling bedoeld als hulpmiddel bij de bezorging van post
+    class_uri: cbs:postcodegebied
+    slots:
+      - geometrie
+      - postcode
     unique_keys:
       main:
         unique_key_slots:
-        - netbeheerder
-        - energiedrager
-        - identificatie
+          - postcode
   Transportcapaciteit:
     description: vermogen om een energiedrager te verplaatsen
+    slots:
+      - energierichting
+      - versie
+      - begin geldigheid
+      - eind geldigheid
+      - Voedingsgebied
     attributes:
-      energierichting:
-        description: kant waarop energie beweegt
-        range: Energierichting
-        required: true
       soort:
         description: groep dingen met gemeenschappelijke kenmerken
-        range: Soort transportcapaciteit
+        range: soort transportcapaciteit
         required: true
       aantal MW:
         description: hoeveelheid megawatt
@@ -99,76 +103,88 @@ classes:
         unit:
           ucum_code: MW
         required: true
-      voedingsgebied:
-        description: voedingsgebied waarvoor de transportcapaciteit geldt
-        range: Voedingsgebied
-        required: true
-      versie:
-        description: versieaanduiding van een informatieobject (NEN3610)
-      begin geldigheid:
-        description: start van de periode waarop deze versie van het informatieobject geldig is (NEN 3610)
-        range: date
-      eind geldigheid:
-        description: eind van de periode waarop deze versie van het informatieobject geldig is (NEN 3610)
-        range: date
     unique_keys:
       main:
         unique_key_slots:
-          - voedingsgebied
           - energierichting
           - soort
           - versie
-  Congestie:
-    description: situatie waarin de te verwachten behoefte aan transport redelijkerwijs kan leiden tot een structureel tekort aan transportcapaciteit
-    attributes:
-      energierichting:
-        description: kant waarop energie beweegt
-        range: Energierichting
-        required: true
-      status:
-        description: toestand waarin een congestie zich bevindt
-        range: Congestiestatus
-        required: true
-      verwacht eindmoment:
-        description: moment waarop naar verwachting geen sprake meer zal zijn van congestie
-        range: date
-      voedingsgebied:
-        description: voedingsgebied waarin zich de congestie voordoet
-        range: Voedingsgebied
-        required: true
-    unique_keys:
-      main:
-        unique_key_slots:
-          - voedingsgebied
-          - energierichting
-  Capaciteit voor nieuwe transportverzoeken:
-    description: transportcapaciteit beschikbaar om nog niet ingediende transportverzoeken uit te voeren
-    attributes:
-      energiedrager:
-        description: opslagmedium voor energie
-        slot_uri: nbnl:energiedrager
-        required: true
-      energierichting:
-        description: kant waarop energie beweegt
-        range: Energierichting
-        required: true
-      categorie:
-        description: onderdeel van een rangschikking
-        range: Transportcapaciteitcategorie
-        required: true
+          - Voedingsgebied
+  Voedingsgebied:
+    description: geografisch afgebakend gebied waar zich de overdrachtspunten van aansluitingen bevinden die van energie worden voorzien door een bepaald netelement
+    slots:
+      - energiedrager
+      - geometrie
+      - identificatie
+      - naam
+      - Netbeheerder
+      - Postcodegebied
+    slot_usage:
       postcodegebied:
-        description: postcodegebied waarvoor de transportcapaciteit geldt
-        range: Postcodegebied
-        required: true
+        multivalued: true
+    attributes:
+      transportverzoeken in een wachtrij:
+        description: aantal transportverzoeken binnen een voedingsgebied dat in een wachtrij staat
+        range: integer
     unique_keys:
       main:
         unique_key_slots:
-          - postcodegebied
-          - energiedrager
-          - energierichting
+        - energiedrager
+        - identificatie
+        - Netbeheerder
+
+slots:
+  bedrijfs-EAN-code:
+    description: identificatienummer van een onderneming conform de Europese Artikel Nummering
+    required: true
+  energiedrager:
+    description: opslagmedium voor energie
+    slot_uri: nbnl:energiedrager
+    required: true
+  energierichting:
+    description: kant waarop energie beweegt
+    range: energierichting
+    required: true
+  geometrie:
+    description: geometrische bepaling van een locatie door middel van coördinaten
+    required: true
+  identificatie:
+    description: reeks karakters om iets ondubbelzinnig te herkennen en onderscheiden van andere dingen
+    required: true
+  naam:
+    description: woord of groep van woorden om iets aan te duiden
+  netvlak:
+    description: deel van het net waarvoor geldt dat de verbruikers aangesloten op dit deel van het net eenzelfde tarief in rekening krijgen
+    range: netvlak
+    required: true
+  postcode:
+    description: reeks tekens om het automatisch sorteren van post gemakkelijker te maken
+    required: true
+  statutaire naam:
+    description: eerste handelsnaam van een onderneming zoals geregistreerd in een register van ondernemingen
+    required: true
+  Netbeheerder:
+    range: Netbeheerder
+    required: true
+  Postcodegebied:
+    range: Postcodegebied
+    required: true
+  Voedingsgebied:
+    range: Voedingsgebied
+    required: true
+  versie:
+    description: versieaanduiding van een informatieobject (NEN3610)
+    required: true
+  begin geldigheid:
+    description: start van de periode waarop deze versie van het informatieobject geldig is (NEN 3610)
+    range: date
+    required: true
+  eind geldigheid:
+    description: eind van de periode waarop deze versie van het informatieobject geldig is (NEN 3610)
+    range: date
 
 enums:
-  Energierichting:
+  energierichting:
     permissible_values:
       invoeding:
         description: inbrenging van energie op het energienet
@@ -176,7 +192,7 @@ enums:
       afname:
         description: onttrekking van energie aan het energienet
         meaning: nbnl:afname
-  Soort transportcapaciteit:
+  soort transportcapaciteit:
     permissible_values:
       aanwezige transportcapaciteit:
         description: maximale capaciteit dat een energienet aankan, met inachtneming van de van toepassing zijnde netontwerpcriteria en operationele veiligheidsgrenzen
@@ -186,13 +202,31 @@ enums:
       gevraagde transportcapaciteit:
         description: transportcapaciteit nodig om transportverzoeken uit te voeren
       transportcapaciteit beschikbaar door congestiemanagement:
-  Congestiestatus:
+  congestiestatus:
     permissible_values:
       vooraangekondigd:
         description: toestand waarin de netbeheerder door middel van een vooraankondiging als bedoeld in artikel 9.9 van de Netcode elektriciteit (geldend van 20-2-2024) een mogelijk tekort aan beschikbare transportcapaciteit heeft gemeld zonder dat deze vooraankondiding is komen te vervallen en waarbij het onderzoek als bedoeld in artikel 9.10 van de Netcode elektriciteit (geldend van 20-2-2024) nog niet is gepubliceerd
       actief:
         description: toestand waarin de netbeheerder na publicatie van een onderzoek als bedoeld in artikel 9.10 van de Netcode elektriciteit (geldend van 20-2-2024) congestiemanagement toepast
-  Transportcapaciteitcategorie:
+  netvlak:
+    permissible_values:
+      EHS:
+        description: extra hoogspanning
+      HS:
+        description: hoogspanning
+      TS:
+        description: tussenspanning
+      MS:
+        description: middenspanning
+      LS:
+        description: laagspanning
+      EHD:
+        description: extra hogedruk
+      HD:
+        description: hogedruk
+      LD:
+        description: lagedruk
+  capaciteitscategorie:
     permissible_values:
       beschikbaar:
         description: de netbeheerder verwacht geen tekort aan transportcapaciteit
