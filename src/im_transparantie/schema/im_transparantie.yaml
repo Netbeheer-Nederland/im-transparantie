@@ -150,6 +150,7 @@ slots:
   energiedrager:
     description: opslagmedium voor energie
     slot_uri: nbnl:energiedrager
+    range: Energiedrager
     required: true
   energierichting:
     description: kant waarop energie beweegt
@@ -203,6 +204,11 @@ enums:
         description: toestand waarin de netbeheerder door middel van een vooraankondiging als bedoeld in artikel 9.9 van de Netcode elektriciteit (geldend van 20-2-2024) een mogelijk tekort aan beschikbare transportcapaciteit heeft gemeld zonder dat deze vooraankondiding is komen te vervallen en waarbij het onderzoek als bedoeld in artikel 9.10 van de Netcode elektriciteit (geldend van 20-2-2024) nog niet is gepubliceerd
       actief:
         description: toestand waarin de netbeheerder na publicatie van een onderzoek als bedoeld in artikel 9.10 van de Netcode elektriciteit (geldend van 20-2-2024) congestiemanagement toepast
+  Energiedrager:
+    permissible_values:
+      elektriciteit:
+      gas:
+      waterstof:
   Energierichting:
     permissible_values:
       invoeding:
