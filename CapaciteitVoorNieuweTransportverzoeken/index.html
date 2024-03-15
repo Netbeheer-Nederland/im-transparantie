@@ -196,6 +196,10 @@
 <p>URI: <a href="https://w3id.org/Netbeheer-Nederland/im-transparantie/CapaciteitVoorNieuweTransportverzoeken">this:CapaciteitVoorNieuweTransportverzoeken</a></p>
 <pre class="mermaid"><code> classDiagram
     class CapaciteitVoorNieuweTransportverzoeken
+      CapaciteitVoorNieuweTransportverzoeken : Aansluittaak
+
+          CapaciteitVoorNieuweTransportverzoeken --&gt; Aansluittaak : Aansluittaak
+
       CapaciteitVoorNieuweTransportverzoeken : categorie
 
           CapaciteitVoorNieuweTransportverzoeken --&gt; capaciteitscategorie : categorie
@@ -205,10 +209,6 @@
       CapaciteitVoorNieuweTransportverzoeken : energierichting
 
           CapaciteitVoorNieuweTransportverzoeken --&gt; energierichting : energierichting
-
-      CapaciteitVoorNieuweTransportverzoeken : Postcodegebied
-
-          CapaciteitVoorNieuweTransportverzoeken --&gt; Postcodegebied : Postcodegebied
 
 </code></pre>
 <!-- no inheritance hierarchy -->
@@ -236,15 +236,15 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../Postcodegebied/">Postcodegebied</a></td>
-<td>1..1 <br/> <a href="../Postcodegebied/">Postcodegebied</a></td>
+<td><a href="../Aansluittaak/">Aansluittaak</a></td>
+<td>1..1 <br/> <a href="../Aansluittaak/">Aansluittaak</a></td>
 <td></td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../categorie/">categorie</a></td>
 <td>1..1 <br/> <a href="../Capaciteitscategorie/">Capaciteitscategorie</a></td>
-<td>onderdeel van een rangschikking</td>
+<td>onderdeel van een rangschikking naar capaciteit</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -284,11 +284,11 @@
 <span class="nt">slots</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">energiedrager</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">energierichting</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Postcodegebied</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Aansluittaak</span>
 <span class="nt">attributes</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">categorie</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">categorie</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">onderdeel van een rangschikking</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">onderdeel van een rangschikking naar capaciteit</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/Netbeheer-Nederland/im-transparantie</span>
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
@@ -301,7 +301,7 @@
 <span class="w">    </span><span class="nt">unique_key_slots</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">energiedrager</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">energierichting</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Postcodegebied</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Aansluittaak</span>
 </code></pre></div>
 </details>
 <h3 id="induced">Induced</h3>
@@ -313,7 +313,7 @@
 <span class="nt">attributes</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">categorie</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">categorie</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">onderdeel van een rangschikking</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">onderdeel van een rangschikking naar capaciteit</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/Netbeheer-Nederland/im-transparantie</span>
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">categorie</span>
@@ -349,17 +349,15 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Transportcapaciteit</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">energierichting</span>
 <span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">  </span><span class="nt">Postcodegebied</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Postcodegebied</span>
+<span class="w">  </span><span class="nt">Aansluittaak</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Aansluittaak</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/Netbeheer-Nederland/im-transparantie</span>
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Postcodegebied</span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Aansluittaak</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Capaciteit voor nieuwe transportverzoeken</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Aansluittaak</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Capaciteit voor nieuwe transportverzoeken</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Voedingsgebied</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Postcodegebied</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Aansluittaak</span>
 <span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="nt">unique_keys</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">main</span><span class="p">:</span>
@@ -367,7 +365,7 @@
 <span class="w">    </span><span class="nt">unique_key_slots</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">energiedrager</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">energierichting</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Postcodegebied</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Aansluittaak</span>
 </code></pre></div>
 </details>
 </article>
