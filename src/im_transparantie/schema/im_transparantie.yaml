@@ -34,10 +34,10 @@ classes:
     slots:
       - energiedrager
       - energierichting
-      - Postcodegebied
+      - Aansluittaak
     attributes:
       categorie:
-        description: onderdeel van een rangschikking
+        description: onderdeel van een rangschikking naar capaciteit
         range: capaciteitscategorie
         required: true
     unique_keys:
@@ -45,7 +45,7 @@ classes:
         unique_key_slots:
           - energiedrager
           - energierichting
-          - Postcodegebied
+          - Aansluittaak
   Congestie:
     description: situatie waarin de te verwachten behoefte aan transport redelijkerwijs kan leiden tot een structureel tekort aan transportcapaciteit
     slots:
@@ -184,6 +184,22 @@ slots:
     range: date
 
 enums:
+  capaciteitscategorie:
+    permissible_values:
+      beschikbaar:
+        description: de netbeheerder verwacht geen tekort aan transportcapaciteit
+      beperkt beschikbaar:
+        description: de netbeheerder verwacht geen tekort aan transportcapaciteit maar nieuwe transportverzoeken vereisen mogelijk onderzoek om de gevraagde en beschikbare transportcapaciteit met elkaar in overeenstemming te brengen
+      in onderzoek:
+        description: de netbeheerder onderzoekt de mogelijkheden voor de toepassing van congestiemanagement zodat er mogelijk transportcapaciteit beschikbaar komt
+      tekort:
+        description: er is te weinig transportcapaciteit
+  congestiestatus:
+    permissible_values:
+      vooraangekondigd:
+        description: toestand waarin de netbeheerder door middel van een vooraankondiging als bedoeld in artikel 9.9 van de Netcode elektriciteit (geldend van 20-2-2024) een mogelijk tekort aan beschikbare transportcapaciteit heeft gemeld zonder dat deze vooraankondiding is komen te vervallen en waarbij het onderzoek als bedoeld in artikel 9.10 van de Netcode elektriciteit (geldend van 20-2-2024) nog niet is gepubliceerd
+      actief:
+        description: toestand waarin de netbeheerder na publicatie van een onderzoek als bedoeld in artikel 9.10 van de Netcode elektriciteit (geldend van 20-2-2024) congestiemanagement toepast
   energierichting:
     permissible_values:
       invoeding:
@@ -192,22 +208,6 @@ enums:
       afname:
         description: onttrekking van energie aan het energienet
         meaning: nbnl:afname
-  soort transportcapaciteit:
-    permissible_values:
-      aanwezige transportcapaciteit:
-        description: maximale capaciteit dat een energienet aankan, met inachtneming van de van toepassing zijnde netontwerpcriteria en operationele veiligheidsgrenzen
-      benodigde transportcapaciteit:
-        description: transportcapaciteit nodig om transportovereenkomsten uit te voeren
-      geraamde benodigde transportcapaciteit voor de totale behoefte aan transport:
-      gevraagde transportcapaciteit:
-        description: transportcapaciteit nodig om transportverzoeken uit te voeren
-      transportcapaciteit beschikbaar door congestiemanagement:
-  congestiestatus:
-    permissible_values:
-      vooraangekondigd:
-        description: toestand waarin de netbeheerder door middel van een vooraankondiging als bedoeld in artikel 9.9 van de Netcode elektriciteit (geldend van 20-2-2024) een mogelijk tekort aan beschikbare transportcapaciteit heeft gemeld zonder dat deze vooraankondiding is komen te vervallen en waarbij het onderzoek als bedoeld in artikel 9.10 van de Netcode elektriciteit (geldend van 20-2-2024) nog niet is gepubliceerd
-      actief:
-        description: toestand waarin de netbeheerder na publicatie van een onderzoek als bedoeld in artikel 9.10 van de Netcode elektriciteit (geldend van 20-2-2024) congestiemanagement toepast
   netvlak:
     permissible_values:
       EHS:
@@ -226,13 +226,13 @@ enums:
         description: hogedruk
       LD:
         description: lagedruk
-  capaciteitscategorie:
+  soort transportcapaciteit:
     permissible_values:
-      beschikbaar:
-        description: de netbeheerder verwacht geen tekort aan transportcapaciteit
-      beperkt beschikbaar:
-        description: de netbeheerder verwacht geen tekort aan transportcapaciteit maar nieuwe transportverzoeken vereisen mogelijk onderzoek om de gevraagde en beschikbare transportcapaciteit met elkaar in overeenstemming te brengen
-      in onderzoek:
-        description: de netbeheerder onderzoekt de mogelijkheden voor de toepassing van congestiemanagement zodat er mogelijk transportcapaciteit beschikbaar komt
-      tekort:
-        description: er is te weinig transportcapaciteit
+      aanwezige transportcapaciteit:
+        description: maximale capaciteit dat een energienet aankan, met inachtneming van de van toepassing zijnde netontwerpcriteria en operationele veiligheidsgrenzen
+      benodigde transportcapaciteit:
+        description: transportcapaciteit nodig om transportovereenkomsten uit te voeren
+      geraamde benodigde transportcapaciteit voor de totale behoefte aan transport:
+      gevraagde transportcapaciteit:
+        description: transportcapaciteit nodig om transportverzoeken uit te voeren
+      transportcapaciteit beschikbaar door congestiemanagement:
