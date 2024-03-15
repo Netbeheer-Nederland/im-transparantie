@@ -194,18 +194,22 @@
 <h1 id="class-transportcapaciteitvoornieuwetransportverzoekeninpostcodegebied">Class: TransportcapaciteitVoorNieuweTransportverzoekenInPostcodegebied</h1>
 <p><em>transportcapaciteit beschikbaar in een postcodegebied om nog niet ingediende transportverzoeken uit te voeren</em></p>
 <p>URI: <a href="https://w3id.org/Netbeheer-Nederland/im-transparantie/TransportcapaciteitVoorNieuweTransportverzoekenInPostcodegebied">this:TransportcapaciteitVoorNieuweTransportverzoekenInPostcodegebied</a></p>
-<pre class="mermaid"><code>erDiagram
-TransportcapaciteitVoorNieuweTransportverzoekenInPostcodegebied {
-    string energiedrager  
-    Energierichting energierichting  
-    Transportcapaciteitcategorie categorie  
-}
-Postcodegebied {
-    string postcode  
-    string geometrie  
-}
+<pre class="mermaid"><code> classDiagram
+    class TransportcapaciteitVoorNieuweTransportverzoekenInPostcodegebied
+      TransportcapaciteitVoorNieuweTransportverzoekenInPostcodegebied : categorie
 
-TransportcapaciteitVoorNieuweTransportverzoekenInPostcodegebied ||--|| Postcodegebied : "postcodegebied"
+          TransportcapaciteitVoorNieuweTransportverzoekenInPostcodegebied --&gt; Transportcapaciteitcategorie : categorie
+
+      TransportcapaciteitVoorNieuweTransportverzoekenInPostcodegebied : energiedrager
+
+      TransportcapaciteitVoorNieuweTransportverzoekenInPostcodegebied : energierichting
+
+          TransportcapaciteitVoorNieuweTransportverzoekenInPostcodegebied --&gt; Energierichting : energierichting
+
+      TransportcapaciteitVoorNieuweTransportverzoekenInPostcodegebied : postcodegebied
+
+          TransportcapaciteitVoorNieuweTransportverzoekenInPostcodegebied --&gt; Postcodegebied : postcodegebied
+
 </code></pre>
 <!-- no inheritance hierarchy -->
 <h2 id="slots">Slots</h2>

@@ -194,31 +194,22 @@
 <h1 id="class-congestieinvoedingsgebied">Class: CongestieInVoedingsgebied</h1>
 <p><em>situatie in een bepaald voedingsgebied, waarin de te verwachten behoefte aan transport redelijkerwijs kan leiden tot een structureel tekort aan transportcapaciteit</em></p>
 <p>URI: <a href="https://w3id.org/Netbeheer-Nederland/im-transparantie/CongestieInVoedingsgebied">this:CongestieInVoedingsgebied</a></p>
-<pre class="mermaid"><code>erDiagram
-CongestieInVoedingsgebied {
-    Energierichting energierichting  
-    Congestiestatus status  
-    date verwacht_eindmoment  
-}
-Voedingsgebied {
-    string identificatie  
-    string energiedrager  
-    string naam  
-    string geometrie  
-    integer transportverzoeken_in_een_wachtrij  
-}
-Postcodegebied {
-    string postcode  
-    string geometrie  
-}
-Netbeheerder {
-    string bedrijfs_EAN_code  
-    string statutaire_naam  
-}
+<pre class="mermaid"><code> classDiagram
+    class CongestieInVoedingsgebied
+      CongestieInVoedingsgebied : energierichting
 
-CongestieInVoedingsgebied ||--|| Voedingsgebied : "voedingsgebied"
-Voedingsgebied ||--|| Netbeheerder : "netbeheerder"
-Voedingsgebied ||--}o Postcodegebied : "postcodegebied"
+          CongestieInVoedingsgebied --&gt; Energierichting : energierichting
+
+      CongestieInVoedingsgebied : status
+
+          CongestieInVoedingsgebied --&gt; Congestiestatus : status
+
+      CongestieInVoedingsgebied : verwacht_eindmoment
+
+      CongestieInVoedingsgebied : voedingsgebied
+
+          CongestieInVoedingsgebied --&gt; Voedingsgebied : voedingsgebied
+
 </code></pre>
 <!-- no inheritance hierarchy -->
 <h2 id="slots">Slots</h2>

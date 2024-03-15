@@ -199,12 +199,11 @@
 <h1 id="class-postcodegebied">Class: Postcodegebied</h1>
 <p><em>indeling bedoeld als hulpmiddel bij de bezorging van post</em></p>
 <p>URI: <a href="https://www.cbs.nl/nl-nl/onze-diensten/methoden/begrippen/postcodegebied">cbs:postcodegebied</a></p>
-<pre class="mermaid"><code>erDiagram
-Postcodegebied {
-    string postcode  
-    string geometrie  
-}
+<pre class="mermaid"><code> classDiagram
+    class Postcodegebied
+      Postcodegebied : geometrie
 
+      Postcodegebied : postcode
 
 </code></pre>
 <!-- no inheritance hierarchy -->
