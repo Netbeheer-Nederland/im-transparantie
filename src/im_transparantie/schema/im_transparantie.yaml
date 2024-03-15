@@ -163,6 +163,9 @@ slots:
   statutaire naam:
     description: eerste handelsnaam van een onderneming zoals geregistreerd in een register van ondernemingen
     required: true
+  Aansluittaak:
+    range: Aansluittaak
+    required: true
   Netbeheerder:
     range: Netbeheerder
     required: true
