@@ -84,31 +84,42 @@ classes:
       main:
         unique_key_slots:
           - postcode
-  Transportcapaciteit:
-    description: vermogen om een energiedrager te verplaatsen
+  Versie van transportcapaciteit:
+    description: voorkomen van transportcapaciteit
     slots:
-      - energierichting
       - begin geldigheid
       - eind geldigheid
       - versie
-      - voedingsgebied
     attributes:
-      soort:
-        description: groep dingen met gemeenschappelijke kenmerken
-        range: Soort transportcapaciteit
-        required: true
       aantal MW:
         description: hoeveelheid megawatt
         range: integer
         unit:
           ucum_code: MW
         required: true
+      transportcapaciteit:
+        range: Transportcapaciteit
+        required: true
+    unique_keys:
+      main:
+        unique_key_slots:
+          - transportcapaciteit
+          - versie
+  Transportcapaciteit:
+    description: vermogen om een energiedrager te verplaatsen
+    slots:
+      - energierichting
+      - voedingsgebied
+    attributes:
+      soort:
+        description: groep dingen met gemeenschappelijke kenmerken
+        range: Soort transportcapaciteit
+        required: true
     unique_keys:
       main:
         unique_key_slots:
           - energierichting
           - soort
-          - versie
           - voedingsgebied
   Voedingsgebied:
     description: geografisch afgebakend gebied waar zich de overdrachtspunten van aansluitingen bevinden die van energie worden voorzien door een bepaald netelement
