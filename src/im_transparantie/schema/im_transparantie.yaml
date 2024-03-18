@@ -180,7 +180,7 @@ slots:
     required: true
   id:
     description: kunstmatige sleutel
-    range: Uriorcurie
+    range: anyURI
     required: true
     identifier: true
   identificatie:
