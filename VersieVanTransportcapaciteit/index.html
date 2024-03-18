@@ -192,7 +192,7 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
 <h1 id="class-versievantransportcapaciteit">Class: VersieVanTransportcapaciteit</h1>
-<p><em>voorkomen van transportcapaciteit</em></p>
+<p><em>toestand van transportcapaciteit tijdens een bepaalde periode (NEN 3610)</em></p>
 <p>URI: <a href="https://w3id.org/Netbeheer-Nederland/im-transparantie/VersieVanTransportcapaciteit">this:VersieVanTransportcapaciteit</a></p>
 <pre class="mermaid"><code> classDiagram
     class VersieVanTransportcapaciteit
@@ -224,19 +224,19 @@
 <tr>
 <td><a href="../begin_geldigheid/">begin_geldigheid</a></td>
 <td>1..1 <br/> <a href="../Date/">Date</a></td>
-<td>start van de periode waarop deze versie van het informatieobject geldig is (N...</td>
+<td>start van de periode waarop deze versie geldig is (NEN 3610)</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../eind_geldigheid/">eind_geldigheid</a></td>
 <td>0..1 <br/> <a href="../Date/">Date</a></td>
-<td>eind van de periode waarop deze versie van het informatieobject geldig is (NE...</td>
+<td>eind van de periode waarop deze versie geldig is (NEN 3610)</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../versie/">versie</a></td>
 <td>1..1 <br/> <a href="../String/">String</a></td>
-<td>versieaanduiding van een informatieobject (NEN3610)</td>
+<td>versieaanduiding (NEN3610)</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -282,7 +282,7 @@
 <h3 id="direct">Direct</h3>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Versie van transportcapaciteit</span>
-<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">voorkomen van transportcapaciteit</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">toestand van transportcapaciteit tijdens een bepaalde periode (NEN 3610)</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/Netbeheer-Nederland/im-transparantie</span>
 <span class="nt">slots</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">begin geldigheid</span>
@@ -319,7 +319,7 @@
 <h3 id="induced">Induced</h3>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Versie van transportcapaciteit</span>
-<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">voorkomen van transportcapaciteit</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">toestand van transportcapaciteit tijdens een bepaalde periode (NEN 3610)</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/Netbeheer-Nederland/im-transparantie</span>
 <span class="nt">attributes</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">aantal MW</span><span class="p">:</span>
@@ -347,8 +347,7 @@
 <span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">  </span><span class="nt">begin geldigheid</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">begin geldigheid</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">start van de periode waarop deze versie van het informatieobject</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">geldig is (NEN 3610)</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">start van de periode waarop deze versie geldig is (NEN 3610)</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/Netbeheer-Nederland/im-transparantie</span>
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">begin_geldigheid</span>
@@ -359,8 +358,7 @@
 <span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">  </span><span class="nt">eind geldigheid</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eind geldigheid</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eind van de periode waarop deze versie van het informatieobject geldig</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">is (NEN 3610)</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eind van de periode waarop deze versie geldig is (NEN 3610)</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/Netbeheer-Nederland/im-transparantie</span>
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eind_geldigheid</span>
@@ -370,7 +368,7 @@
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">date</span>
 <span class="w">  </span><span class="nt">versie</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">versie</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">versieaanduiding van een informatieobject (NEN3610)</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">versieaanduiding (NEN3610)</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/Netbeheer-Nederland/im-transparantie</span>
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">versie</span>
