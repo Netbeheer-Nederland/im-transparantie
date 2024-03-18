@@ -26,6 +26,7 @@ classes:
     description: toekenning door de ACM van een gebied aan een netbeheerder waarbinnen deze de wettelijke taak inzake aansluiten verricht
     slots:
       - energiedrager
+      - id
       - netbeheerder
       - netvlak
       - postcodegebied
@@ -35,6 +36,7 @@ classes:
       - aansluittaak
       - energiedrager
       - energierichting
+      - id
     attributes:
       categorie:
         description: onderdeel van een rangschikking naar capaciteit
@@ -50,6 +52,7 @@ classes:
     description: situatie waarin de te verwachten behoefte aan transport redelijkerwijs kan leiden tot een structureel tekort aan transportcapaciteit
     slots:
       - energierichting
+      - id
       - voedingsgebied
     attributes:
       status:
@@ -69,6 +72,7 @@ classes:
     class_uri: nbnl:netbeheerder
     slots:
       - bedrijfs-EAN-code
+      - id
       - statutaire naam
     unique_keys:
       main:
@@ -79,16 +83,35 @@ classes:
     class_uri: cbs:postcodegebied
     slots:
       - geometrie
+      - id
       - postcode
     unique_keys:
       main:
         unique_key_slots:
           - postcode
+  Transportcapaciteit:
+    description: vermogen om een energiedrager te verplaatsen
+    slots:
+      - energierichting
+      - id
+      - voedingsgebied
+    attributes:
+      soort:
+        description: groep dingen met gemeenschappelijke kenmerken
+        range: Soort transportcapaciteit
+        required: true
+    unique_keys:
+      main:
+        unique_key_slots:
+          - energierichting
+          - soort
+          - voedingsgebied
   Versie van transportcapaciteit:
-    description: voorkomen van transportcapaciteit
+    description: toestand van transportcapaciteit tijdens een bepaalde periode (NEN 3610)
     slots:
       - begin geldigheid
       - eind geldigheid
+      - id
       - versie
     attributes:
       aantal MW:
@@ -105,27 +128,12 @@ classes:
         unique_key_slots:
           - transportcapaciteit
           - versie
-  Transportcapaciteit:
-    description: vermogen om een energiedrager te verplaatsen
-    slots:
-      - energierichting
-      - voedingsgebied
-    attributes:
-      soort:
-        description: groep dingen met gemeenschappelijke kenmerken
-        range: Soort transportcapaciteit
-        required: true
-    unique_keys:
-      main:
-        unique_key_slots:
-          - energierichting
-          - soort
-          - voedingsgebied
   Voedingsgebied:
     description: geografisch afgebakend gebied waar zich de overdrachtspunten van aansluitingen bevinden die van energie worden voorzien door een bepaald netelement
     slots:
       - energiedrager
       - geometrie
+      - id
       - identificatie
       - naam
       - netbeheerder
@@ -152,11 +160,11 @@ slots:
     description: identificatienummer van een onderneming conform de Europese Artikel Nummering
     required: true
   begin geldigheid:
-    description: start van de periode waarop deze versie van het informatieobject geldig is (NEN 3610)
+    description: start van de periode waarop deze versie geldig is (NEN 3610)
     range: date
     required: true
   eind geldigheid:
-    description: eind van de periode waarop deze versie van het informatieobject geldig is (NEN 3610)
+    description: eind van de periode waarop deze versie geldig is (NEN 3610)
     range: date
   energiedrager:
     description: opslagmedium voor energie
@@ -170,6 +178,11 @@ slots:
   geometrie:
     description: geometrische bepaling van een locatie door middel van coördinaten
     required: true
+  id:
+    description: kunstmatige sleutel
+    range: Uriorcurie
+    required: true
+    identifier: true
   identificatie:
     description: reeks karakters om iets ondubbelzinnig te herkennen en onderscheiden van andere dingen
     required: true
@@ -192,7 +205,7 @@ slots:
     description: eerste handelsnaam van een onderneming zoals geregistreerd in een register van ondernemingen
     required: true
   versie:
-    description: versieaanduiding van een informatieobject (NEN3610)
+    description: versieaanduiding (NEN3610)
     required: true
   voedingsgebied:
     range: Voedingsgebied
