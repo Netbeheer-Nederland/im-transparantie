@@ -26,7 +26,6 @@ classes:
     description: toekenning door de ACM van een gebied aan een netbeheerder waarbinnen deze de wettelijke taak inzake aansluiten verricht
     slots:
       - energiedrager
-      - id
       - netbeheerder
       - netvlak
       - postcodegebied
@@ -36,7 +35,6 @@ classes:
       - aansluittaak
       - energiedrager
       - energierichting
-      - id
     attributes:
       categorie:
         description: onderdeel van een rangschikking naar capaciteit
@@ -52,7 +50,6 @@ classes:
     description: situatie waarin de te verwachten behoefte aan transport redelijkerwijs kan leiden tot een structureel tekort aan transportcapaciteit
     slots:
       - energierichting
-      - id
       - voedingsgebied
     attributes:
       status:
@@ -72,7 +69,6 @@ classes:
     class_uri: nbnl:netbeheerder
     slots:
       - bedrijfs-EAN-code
-      - id
       - statutaire naam
     unique_keys:
       main:
@@ -83,7 +79,6 @@ classes:
     class_uri: cbs:postcodegebied
     slots:
       - geometrie
-      - id
       - postcode
     unique_keys:
       main:
@@ -93,7 +88,6 @@ classes:
     description: vermogen om een energiedrager te verplaatsen
     slots:
       - energierichting
-      - id
       - voedingsgebied
     attributes:
       soort:
@@ -111,7 +105,6 @@ classes:
     slots:
       - begin geldigheid
       - eind geldigheid
-      - id
       - versie
     attributes:
       aantal MW:
@@ -133,7 +126,6 @@ classes:
     slots:
       - energiedrager
       - geometrie
-      - id
       - identificatie
       - naam
       - netbeheerder
@@ -178,11 +170,6 @@ slots:
   geometrie:
     description: geometrische bepaling van een locatie door middel van coördinaten
     required: true
-  id:
-    description: kunstmatige sleutel
-    range: anyURI
-    required: true
-    identifier: true
   identificatie:
     description: reeks karakters om iets ondubbelzinnig te herkennen en onderscheiden van andere dingen
     required: true
